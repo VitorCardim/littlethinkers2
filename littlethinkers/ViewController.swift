@@ -21,6 +21,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
             studentname.text = name
         }
         studentname.delegate = self
+        if studentname.text?.isEmpty == false {
+            continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+            continuar.isEnabled = true
+            continuar.setTitleColor(UIColor.black, for: .normal)
+        }
+        else{
+            continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
+            continuar.isEnabled = false
+            continuar.setTitleColor(UIColor(red:0.81, green:0.88, blue:0.90, alpha:1.0), for: .normal)
+            
+            
+        }
     }
     @IBAction func continuar(_ sender: Any) {
         performSegue(withIdentifier: "go", sender: self)
@@ -28,19 +40,41 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let enviarnome = segue.destination as! AvaViewController
         enviarnome.student = studentname.text!
-        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 1 {
             UserDefaults.standard.set(textField.text, forKey: "name")
         }
         self.view.endEditing(true)
+        if studentname.text?.isEmpty == false {
+            continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+            continuar.isEnabled = true
+            continuar.setTitleColor(UIColor.black, for: .normal)
+        }
+        else{
+            continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
+            continuar.isEnabled = false
+            continuar.setTitleColor(UIColor(red:0.81, green:0.88, blue:0.90, alpha:1.0), for: .normal)
+        }
+        
         return false
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        if studentname.text?.isEmpty == false {
+            continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+            continuar.isEnabled = false
+            continuar.setTitleColor(UIColor.black, for: .normal)
+        }
+        else{
+            continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
+            continuar.isEnabled = false
+            continuar.setTitleColor(UIColor(red:0.81, green:0.88, blue:0.90, alpha:1.0), for: .normal)
+        }
+}
 }
 
 

@@ -16,6 +16,10 @@
 		5F00553D20A09D5A0002BEBE /* littlethinkersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00553C20A09D5A0002BEBE /* littlethinkersTests.swift */; };
 		5F00554820A09D5A0002BEBE /* littlethinkersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00554720A09D5A0002BEBE /* littlethinkersUITests.swift */; };
 		5F00556020A0AB1D0002BEBE /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5F00555F20A0AB1D0002BEBE /* Fonts */; };
+		5F5292CE20A37C53005209F4 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5292CD20A37C53005209F4 /* back.png */; };
+		5F5292D820A38013005209F4 /* girl-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5292D520A38012005209F4 /* girl-2.png */; };
+		5F5292D920A38013005209F4 /* girl-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5292D620A38013005209F4 /* girl-3.png */; };
+		5F5292DA20A38013005209F4 /* girl-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F5292D720A38013005209F4 /* girl-1.png */; };
 		5F5E1E1620A23C130007B73C /* SenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1520A23C130007B73C /* SenhaViewController.swift */; };
 		5F5E1E1820A23CE70007B73C /* SenhaColocarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */; };
 		5F5E1E1A20A23D030007B73C /* SenhaTecladoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */; };
@@ -57,6 +61,10 @@
 		5F00554720A09D5A0002BEBE /* littlethinkersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = littlethinkersUITests.swift; sourceTree = "<group>"; };
 		5F00554920A09D5A0002BEBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F00555F20A0AB1D0002BEBE /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../Downloads/Fonts; sourceTree = "<group>"; };
+		5F5292CD20A37C53005209F4 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back.png; path = ../../../Downloads/back.png; sourceTree = "<group>"; };
+		5F5292D520A38012005209F4 /* girl-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "girl-2.png"; path = "../../../Downloads/girl-2.png"; sourceTree = "<group>"; };
+		5F5292D620A38013005209F4 /* girl-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "girl-3.png"; path = "../../../Downloads/girl-3.png"; sourceTree = "<group>"; };
+		5F5292D720A38013005209F4 /* girl-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "girl-1.png"; path = "../../../Downloads/girl-1.png"; sourceTree = "<group>"; };
 		5F5E1E1520A23C130007B73C /* SenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaViewController.swift; sourceTree = "<group>"; };
 		5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaColocarCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaTecladoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -122,6 +130,10 @@
 				5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */,
 				5F00552820A09D580002BEBE /* Main.storyboard */,
 				5F00552E20A09D5A0002BEBE /* Assets.xcassets */,
+				5F5292D720A38013005209F4 /* girl-1.png */,
+				5F5292D520A38012005209F4 /* girl-2.png */,
+				5F5292D620A38013005209F4 /* girl-3.png */,
+				5F5292CD20A37C53005209F4 /* back.png */,
 				5FF17F3420A1E0D800B74FCE /* Res Protótipos */,
 				5F00555F20A0AB1D0002BEBE /* Fonts */,
 				5F00553020A09D5A0002BEBE /* LaunchScreen.storyboard */,
@@ -256,7 +268,11 @@
 				5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */,
 				5FF17F3520A1E0D800B74FCE /* Res Protótipos in Resources */,
 				5F00552F20A09D5A0002BEBE /* Assets.xcassets in Resources */,
+				5F5292D920A38013005209F4 /* girl-3.png in Resources */,
+				5F5292DA20A38013005209F4 /* girl-1.png in Resources */,
+				5F5292CE20A37C53005209F4 /* back.png in Resources */,
 				5F00552A20A09D580002BEBE /* Main.storyboard in Resources */,
+				5F5292D820A38013005209F4 /* girl-2.png in Resources */,
 				5F00556020A0AB1D0002BEBE /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
