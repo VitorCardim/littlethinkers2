@@ -296,7 +296,7 @@
                                 </state>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIp-Eo-GOb">
-                                <rect key="frame" x="94" y="634" width="42" height="21"/>
+                                <rect key="frame" x="64" y="632" width="284" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -317,7 +317,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0l-nI-Q2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1vz-6E-8k7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1970" y="143"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="142.66304347826087"/>
         </scene>
     </scenes>
     <resources>
