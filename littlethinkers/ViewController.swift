@@ -66,7 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         if studentname.text?.isEmpty == false {
             continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
-            continuar.isEnabled = false
+            continuar.isEnabled = true
             continuar.setTitleColor(UIColor.black, for: .normal)
         }
         else{
