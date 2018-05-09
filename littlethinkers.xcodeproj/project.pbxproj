@@ -15,6 +15,13 @@
 		5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F00553020A09D5A0002BEBE /* LaunchScreen.storyboard */; };
 		5F00553D20A09D5A0002BEBE /* littlethinkersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00553C20A09D5A0002BEBE /* littlethinkersTests.swift */; };
 		5F00554820A09D5A0002BEBE /* littlethinkersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F00554720A09D5A0002BEBE /* littlethinkersUITests.swift */; };
+		5F00556020A0AB1D0002BEBE /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 5F00555F20A0AB1D0002BEBE /* Fonts */; };
+		5F5E1E1620A23C130007B73C /* SenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1520A23C130007B73C /* SenhaViewController.swift */; };
+		5F5E1E1820A23CE70007B73C /* SenhaColocarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */; };
+		5F5E1E1A20A23D030007B73C /* SenhaTecladoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */; };
+		5FF17F2D20A1CC0A00B74FCE /* AvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */; };
+		5FF17F3520A1E0D800B74FCE /* Res Protótipos in Resources */ = {isa = PBXBuildFile; fileRef = 5FF17F3420A1E0D800B74FCE /* Res Protótipos */; };
+		5FF17F3720A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 		5F00554320A09D5A0002BEBE /* littlethinkersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = littlethinkersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F00554720A09D5A0002BEBE /* littlethinkersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = littlethinkersUITests.swift; sourceTree = "<group>"; };
 		5F00554920A09D5A0002BEBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5F00555F20A0AB1D0002BEBE /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = ../../../Downloads/Fonts; sourceTree = "<group>"; };
+		5F5E1E1520A23C130007B73C /* SenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaViewController.swift; sourceTree = "<group>"; };
+		5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaColocarCollectionViewCell.swift; sourceTree = "<group>"; };
+		5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenhaTecladoCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaViewController.swift; sourceTree = "<group>"; };
+		5FF17F3420A1E0D800B74FCE /* Res Protótipos */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "Res Protótipos"; path = "../../../Downloads/Res Protótipos"; sourceTree = "<group>"; };
+		5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +115,15 @@
 			children = (
 				5F00552420A09D580002BEBE /* AppDelegate.swift */,
 				5F00552620A09D580002BEBE /* ViewController.swift */,
+				5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */,
+				5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */,
+				5F5E1E1520A23C130007B73C /* SenhaViewController.swift */,
+				5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */,
+				5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */,
 				5F00552820A09D580002BEBE /* Main.storyboard */,
 				5F00552E20A09D5A0002BEBE /* Assets.xcassets */,
+				5FF17F3420A1E0D800B74FCE /* Res Protótipos */,
+				5F00555F20A0AB1D0002BEBE /* Fonts */,
 				5F00553020A09D5A0002BEBE /* LaunchScreen.storyboard */,
 				5F00553320A09D5A0002BEBE /* Info.plist */,
 				5F00552B20A09D580002BEBE /* littlethinkers.xcdatamodeld */,
@@ -233,8 +254,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */,
+				5FF17F3520A1E0D800B74FCE /* Res Protótipos in Resources */,
 				5F00552F20A09D5A0002BEBE /* Assets.xcassets in Resources */,
 				5F00552A20A09D580002BEBE /* Main.storyboard in Resources */,
+				5F00556020A0AB1D0002BEBE /* Fonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +282,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FF17F3720A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift in Sources */,
+				5F5E1E1A20A23D030007B73C /* SenhaTecladoCollectionViewCell.swift in Sources */,
 				5F00552720A09D580002BEBE /* ViewController.swift in Sources */,
+				5F5E1E1820A23CE70007B73C /* SenhaColocarCollectionViewCell.swift in Sources */,
+				5FF17F2D20A1CC0A00B74FCE /* AvaViewController.swift in Sources */,
 				5F00552D20A09D580002BEBE /* littlethinkers.xcdatamodeld in Sources */,
+				5F5E1E1620A23C130007B73C /* SenhaViewController.swift in Sources */,
 				5F00552520A09D580002BEBE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
