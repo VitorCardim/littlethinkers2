@@ -18,6 +18,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     var imageTeclado = [ "CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
     var imageSenha = [String]()
     var senha = [Int]()
+    var senhaprofessora:[Int] = [1,2,0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +76,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 continuar.isEnabled = false
                 continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
                 continuar.setTitleColor(UIColor(red:0.50, green:0.65, blue:0.52, alpha:1.0), for: .normal)}
-            if imageSenha.count == 3{
+            if imageSenha.count == 3 && senha == senhaprofessora{
                 continuar.isEnabled = true
                 continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
                 continuar.setTitleColor(UIColor.black, for: .normal)}

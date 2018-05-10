@@ -12,10 +12,9 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     
     @IBOutlet weak var continuar: UIButton!
     @IBOutlet weak var quadroAvatares: UICollectionView!
-    var images = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
-    
     @IBOutlet weak var welcome: UILabel!
     var student = ""
+    var images = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
     override func viewDidLoad() {
         super.viewDidLoad()
         welcome.text = "Tudo bem , \(student) ?"
@@ -49,10 +48,11 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
-        continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
         cell?.layer.borderWidth = 0
         continuar.isEnabled = true
         continuar.setTitleColor(UIColor.black, for: .normal)
+        continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+
         
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
