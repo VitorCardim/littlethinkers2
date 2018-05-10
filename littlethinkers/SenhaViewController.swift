@@ -15,7 +15,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var tecladoSenhas: UICollectionView!
     @IBOutlet weak var quadroSenha: UICollectionView!
     
-    var imageTeclado = [ "CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
+    var imageTeclado = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
     var imageSenha = [String]()
     var senha = [Int]()
     var senhaprofessora:[Int] = [1,2,0]

@@ -14,7 +14,7 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var continuar: UIButton!
     @IBOutlet weak var sim: UIButton!
     @IBOutlet weak var nao: UIButton!
-    var images = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3","other-1","other-2","other-3"]
+    var imageTu = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3","other-1","other-2","other-3"]
     override func viewDidLoad() {
         super.viewDidLoad()
         continuar.layer.cornerRadius = continuar.bounds.height / 2
@@ -43,12 +43,12 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return imageTu.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:TutorialCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageTutorial", for: indexPath) as! TutorialCollectionViewCell
-        cell.image1.image = UIImage(named:images[indexPath.row])
+        cell.image1.image = UIImage(named:imageTu[indexPath.row])
         return cell
     }
-    
 }
+

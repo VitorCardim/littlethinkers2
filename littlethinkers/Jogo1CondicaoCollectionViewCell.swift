@@ -1,5 +1,5 @@
 //
-//  TutorialCollectionViewCell.swift
+//  Jogo1CondicaoCollectionViewCell.swift
 //  littlethinkers
 //
 //  Created by Vitor Cardim Menezes on 10/05/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TutorialCollectionViewCell: UICollectionViewCell {
-
+class Jogo1CondicaoCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var image1: UIImageView!
 }

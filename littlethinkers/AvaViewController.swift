@@ -14,7 +14,7 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var quadroAvatares: UICollectionView!
     @IBOutlet weak var welcome: UILabel!
     var student = ""
-    var images = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
+    var images = ["boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
     override func viewDidLoad() {
         super.viewDidLoad()
         welcome.text = "Tudo bem , \(student) ?"
