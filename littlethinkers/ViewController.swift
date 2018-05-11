@@ -12,8 +12,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var studentname: UITextField!
     @IBOutlet weak var continuar: UIButton!
-    @IBOutlet weak var bottommargintext: NSLayoutConstraint!
-    @IBOutlet weak var bottommargincontinuar: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         continuar.layer.cornerRadius = continuar.bounds.height / 2

@@ -10,15 +10,18 @@ import UIKit
 
 class TutorialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var comojogar: UILabel!
     @IBOutlet weak var quadroTutorial: UICollectionView!
     @IBOutlet weak var continuar: UIButton!
-    var imageTu = ["tri-tra","correct","splash-azul","cross","TRAzul","ret-tra","correct","splash-verm","cross","QDVerm","ret-tra","correct","splash-verd","cross","QDVerd"]
+    var imageTu = ["tri-tra","e","splash-azul","igual","TRAzul","ret-tra","ou","splash-verm","igual","QDVerm","ret-tra","ou","splash-verd","igual","QDVerd"]
     override func viewDidLoad() {
         super.viewDidLoad()
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         quadroTutorial.delegate = self
         quadroTutorial.dataSource = self
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "default-opaco")!)
+
+        
         
     }
     
@@ -39,6 +42,7 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         cell.image1.image = UIImage(named:imageTu[indexPath.row])
         return cell}
 }
+
 
 
 

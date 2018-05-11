@@ -11,17 +11,17 @@ import UIKit
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
+    @IBOutlet weak var tempo: UILabel!
     @IBOutlet weak var quadrojogo: UICollectionView!
     @IBOutlet weak var quadrocondicao: UICollectionView!
-    @IBOutlet weak var pontos: UILabel!
     @IBOutlet weak var dicas: UIButton!
     @IBOutlet weak var dificuldade: UILabel!
     var condicaoimages = [["CRAzul","TRAzul","QDAzul","TRRosa"],["QDRosa","CRRosa","CRVerm","TRVerm"], ["boy-1","boy-2","boy-3","girl-1"],["girl-2","girl-3","other-1","other-2"]]
     var jogoimages = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        dicas.layer.cornerRadius = dicas.bounds.width / 2
-        pontos.layer.cornerRadius = pontos.bounds.width / 2
+        dicas.layer.cornerRadius = dicas.bounds.width*0.8
+        tempo.layer.cornerRadius = tempo.bounds.width*0.8
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self

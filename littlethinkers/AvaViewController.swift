@@ -23,8 +23,6 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         continuar.isEnabled = false
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
