@@ -37,7 +37,7 @@
                                 </state>
                                 <connections>
                                     <action selector="continuar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ebz-dd-V63"/>
-                                    <segue destination="bpa-Ul-2dP" kind="show" identifier="go" animates="NO" id="kBY-Wq-Iks"/>
+                                    <segue destination="bpa-Ul-2dP" kind="showDetail" identifier="go" animates="NO" id="kBY-Wq-Iks"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oi, qual é o seu nome?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKh-wX-gyK">
@@ -157,7 +157,7 @@
                                     <color key="titleColor" red="0.50107684679999998" green="0.64798943019999999" blue="0.5168174807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cxy-1T-HWo" kind="show" identifier="" animates="NO" id="d1M-gX-GS4"/>
+                                    <segue destination="cxy-1T-HWo" kind="showDetail" identifier="" animates="NO" id="d1M-gX-GS4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWc-Aq-mjZ">
@@ -249,7 +249,7 @@
                                     <color key="titleColor" red="0.50107684679999998" green="0.64798943019999999" blue="0.5168174807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FEz-sn-YrD" kind="show" animates="NO" id="iJq-jS-ZEr"/>
+                                    <segue destination="FEz-sn-YrD" kind="showDetail" animates="NO" id="iJq-jS-ZEr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-vf-OHs">
@@ -407,7 +407,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="l2s-mm-d1u" kind="show" animates="NO" id="Y6q-aJ-IZY"/>
+                                    <segue destination="l2s-mm-d1u" kind="showDetail" animates="NO" id="Y6q-aJ-IZY"/>
                                 </connections>
                             </button>
                         </subviews>
