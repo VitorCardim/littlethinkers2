@@ -17,7 +17,16 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var dicas: UIButton!
     @IBOutlet weak var dificuldade: UILabel!
     var condicaoimages = [["CRAzul","TRAzul","QDAzul","TRRosa"],["QDRosa","CRRosa","CRVerm","TRVerm"], ["boy-1","boy-2","boy-3","girl-1"],["girl-2","girl-3","other-1","other-2"]]
-    var jogoimages = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
+    var jogoimages = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm","CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm","CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
+    //Possibilidades e Arrays bases
+    var condicoes = ["e","ou"]
+    var formastra = ["tri-tra","cir-tra","trap-tra","cir-tra"]
+    var cores = ["Rosa","Verde","Azul","Amarelo"]
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         dicas.layer.cornerRadius = dicas.bounds.width*0.8
