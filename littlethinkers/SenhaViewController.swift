@@ -18,7 +18,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     var imageTeclado = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
     var imageSenha = [String]()
     var senha = [Int]()
-    var senhaprofessora:[Int] = [1,2,0]
+    var senhaprofessora:[Int] = [7,4,0]
     
     override func viewDidLoad() {
         super.viewDidLoad()
