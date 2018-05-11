@@ -10,6 +10,7 @@ import UIKit
 
 class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var codigoacesso: UILabel!
     @IBOutlet weak var apagar: UIButton!
     @IBOutlet weak var continuar: UIButton!
     @IBOutlet weak var tecladoSenhas: UICollectionView!
@@ -69,6 +70,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
             let cellT = collectionView.cellForItem(at: indexPath)
             cellT?.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
             cellT?.layer.borderWidth = 0
+            self.codigoacesso.text = ""
             if imageSenha.count != 3 {
                 imageSenha.append(imageTeclado[indexPath.row])
                 senha.append(imageTeclado.index(of: imageTeclado[indexPath.row])!)
@@ -111,6 +113,8 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 apagar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
                 apagar.isEnabled = false
                 apagar.setTitleColor(UIColor(red:0.50, green:0.65, blue:0.52, alpha:1.0), for: .normal)
+                self.codigoacesso.text = "Insira o código"
+                
                 
             }
         }}

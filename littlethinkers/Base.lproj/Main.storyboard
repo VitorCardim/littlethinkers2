@@ -37,7 +37,7 @@
                                 </state>
                                 <connections>
                                     <action selector="continuar:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ebz-dd-V63"/>
-                                    <segue destination="bpa-Ul-2dP" kind="showDetail" identifier="go" animates="NO" id="kBY-Wq-Iks"/>
+                                    <segue destination="bpa-Ul-2dP" kind="show" identifier="go" animates="NO" id="kBY-Wq-Iks"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oi, qual é o seu nome?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QKh-wX-gyK">
@@ -157,7 +157,7 @@
                                     <color key="titleColor" red="0.50107684679999998" green="0.64798943019999999" blue="0.5168174807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cxy-1T-HWo" kind="showDetail" identifier="" animates="NO" id="d1M-gX-GS4"/>
+                                    <segue destination="cxy-1T-HWo" kind="show" identifier="" animates="NO" id="d1M-gX-GS4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWc-Aq-mjZ">
@@ -210,36 +210,6 @@
                                     <action selector="voltar:" destination="1vz-6E-8k7" eventType="touchUpInside" id="xKM-4s-jbM"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-YR-3Nn">
-                                <rect key="frame" x="20" y="75" width="374" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.50980392159999999" green="0.83921568629999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Li-nY-Fsf">
-                                    <size key="itemSize" width="96" height="96"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageSenha" id="d3k-wB-vZ3" customClass="SenhaColocarCollectionViewCell" customModule="littlethinkers" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WVa-pM-bfh">
-                                                    <rect key="frame" x="3" y="3" width="90" height="90"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </view>
-                                        <connections>
-                                            <outlet property="senhaColocar" destination="WVa-pM-bfh" id="5ZN-9Q-lgb"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Pd6-LV-7Yo">
                                 <rect key="frame" x="20" y="194" width="374" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -279,7 +249,7 @@
                                     <color key="titleColor" red="0.50107684679999998" green="0.64798943019999999" blue="0.5168174807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="FEz-sn-YrD" kind="showDetail" animates="NO" id="iJq-jS-ZEr"/>
+                                    <segue destination="FEz-sn-YrD" kind="show" animates="NO" id="iJq-jS-ZEr"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yob-vf-OHs">
@@ -302,12 +272,51 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="w4z-YR-3Nn">
+                                <rect key="frame" x="20" y="75" width="374" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.50980392159999999" green="0.83921568629999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9Li-nY-Fsf">
+                                    <size key="itemSize" width="96" height="96"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Insira o código" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M3Y-86-kju">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="94"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.75294117650000003" green="0.96470588239999999" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="35"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imageSenha" id="d3k-wB-vZ3" customClass="SenhaColocarCollectionViewCell" customModule="littlethinkers" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WVa-pM-bfh">
+                                                    <rect key="frame" x="3" y="3" width="90" height="90"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="senhaColocar" destination="WVa-pM-bfh" id="5ZN-9Q-lgb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.50980392159999999" green="0.83921568629999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="uRK-u2-w6b"/>
                     </view>
                     <connections>
                         <outlet property="apagar" destination="Yob-vf-OHs" id="WCV-P2-ds2"/>
+                        <outlet property="codigoacesso" destination="M3Y-86-kju" id="L6V-E0-XAY"/>
                         <outlet property="continuar" destination="rss-NR-Oph" id="UHi-Kp-S5i"/>
                         <outlet property="quadroSenha" destination="w4z-YR-3Nn" id="7uf-KW-Fyg"/>
                         <outlet property="tecladoSenhas" destination="Pd6-LV-7Yo" id="rLv-rY-vYM"/>
@@ -316,7 +325,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0l-nI-Q2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1vz-6E-8k7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1720" y="143"/>
+            <point key="canvasLocation" x="1718.840579710145" y="142.66304347826087"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="fir-Ai-Fyw">
@@ -398,7 +407,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="l2s-mm-d1u" kind="showDetail" animates="NO" id="Y6q-aJ-IZY"/>
+                                    <segue destination="l2s-mm-d1u" kind="show" animates="NO" id="Y6q-aJ-IZY"/>
                                 </connections>
                             </button>
                         </subviews>
