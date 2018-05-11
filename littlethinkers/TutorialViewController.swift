@@ -12,33 +12,22 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
 
     @IBOutlet weak var quadroTutorial: UICollectionView!
     @IBOutlet weak var continuar: UIButton!
-    @IBOutlet weak var sim: UIButton!
-    @IBOutlet weak var nao: UIButton!
-    var imageTu = [ "boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3","other-1","other-2","other-3"]
+    var imageTu = ["tri-tra","correct","splash-azul","cross","TRAzul","ret-tra","correct","splash-verm","cross","QDVerm","ret-tra","correct","splash-verd","cross","QDVerd"]
     override func viewDidLoad() {
         super.viewDidLoad()
         continuar.layer.cornerRadius = continuar.bounds.height / 2
-        nao.layer.cornerRadius = continuar.bounds.height / 2
-        sim.layer.cornerRadius = continuar.bounds.height / 2
         quadroTutorial.delegate = self
         quadroTutorial.dataSource = self
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "default-opaco")!)
         
-        
-        
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func sim(_ sender: UIButton) {
-        continuar.isEnabled = true
-        continuar.setTitleColor(UIColor.black, for: .normal)
-        continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
-        
-    }
+
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -48,7 +37,8 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell:TutorialCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageTutorial", for: indexPath) as! TutorialCollectionViewCell
         cell.image1.image = UIImage(named:imageTu[indexPath.row])
-        return cell
-    }
+        return cell}
 }
+
+
 
