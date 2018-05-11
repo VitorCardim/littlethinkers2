@@ -17,14 +17,15 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     var images = ["boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
     override func viewDidLoad() {
         super.viewDidLoad()
-        welcome.text = "Tudo bem , \(student) ?"
+        welcome.text = "Tudo bem, \(student)?"
         quadroAvatares.delegate = self
         quadroAvatares.dataSource = self
         continuar.isEnabled = false
         continuar.layer.cornerRadius = continuar.bounds.height / 2
-        
-    }
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

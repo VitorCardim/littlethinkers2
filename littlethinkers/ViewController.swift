@@ -28,13 +28,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
             continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
             continuar.isEnabled = false
             continuar.setTitleColor(UIColor(red:0.81, green:0.88, blue:0.90, alpha:1.0), for: .normal)
-            
-            
         }
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
-    @IBAction func continuar(_ sender: Any) {
-        performSegue(withIdentifier: "go", sender: self)
-    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let enviarnome = segue.destination as! AvaViewController
         enviarnome.student = studentname.text!
@@ -73,6 +70,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
             continuar.setTitleColor(UIColor(red:0.81, green:0.88, blue:0.90, alpha:1.0), for: .normal)
         }
 }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
 }
 
 
