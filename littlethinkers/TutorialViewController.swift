@@ -14,10 +14,10 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var quadroTutorial: UICollectionView!
     @IBOutlet weak var continuar: UIButton!
     var imageTu = [String]()
-    var condicoes = ["e","ou"]
     var formas = ["triangulo","circulo","trapezio","quadrado"]
     var cores = ["rosa","verde","azul","amarelo"]
     var igualimg = ["igual"]
+    var condicoes = ["e","ou"]
     var formacor = ["circuloamarelo", "circuloazul","circuloblue","circulolara","circulolima","circulorosa","circuloverde","circulovermelho","quadradoamarelo","quadradoazul","quadradoblue","quadradolara","quadradolima","quadradorosa","quadradoverde","quadradovermelho","trianguloamarelo", "trianguloazul","trianguloblue","triangulolara","triangulolima","triangulorosa","trianguloverde","triangulovermelho","trapezioamarelo", "trapezioazul","trapezioblue","trapeziolara","trapeziolima","trapeziorosa","trapezioverde","trapeziovermelho"]
     
     
@@ -27,42 +27,50 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         quadroTutorial.delegate = self
         quadroTutorial.dataSource = self
         self.view.backgroundColor = UIColor(patternImage: UIImage(named: "default-opaco")!)
-        let randomforma = [formas[Int(arc4random_uniform(UInt32(formas.count)))],formas[Int(arc4random_uniform(UInt32(formas.count)))],formas[Int(arc4random_uniform(UInt32(formas.count)))]]
-        let randomcores = [cores[Int(arc4random_uniform(UInt32(cores.count)))],cores[Int(arc4random_uniform(UInt32(cores.count)))],cores[Int(arc4random_uniform(UInt32(cores.count)))]]
-        let randomcondi = [condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))],condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))],condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]]
-        let formacorrandom = formacor.shuffled()
-        var i = 0
-        while imageTu.count != 15 && i != 3{
-            imageTu.append(randomforma[i])
-            imageTu.append(randomcondi[i])
-            imageTu.append(randomcores[i])
-            imageTu.append(igualimg[0])
-            if (randomcondi[i] == "e"){
-                for x in formacorrandom{
-                    if  x == randomforma[i] + randomcores[i]{
-                        imageTu.append(x)
+        var ok = false
+        while ok == false{
+            let randomforma = [formas[Int(arc4random_uniform(UInt32(formas.count)))],formas[Int(arc4random_uniform(UInt32(formas.count)))],formas[Int(arc4random_uniform(UInt32(formas.count)))]]
+            let randomcores = [cores[Int(arc4random_uniform(UInt32(cores.count)))],cores[Int(arc4random_uniform(UInt32(cores.count)))],cores[Int(arc4random_uniform(UInt32(cores.count)))]]
+            let randomcondi = [condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))],condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))],condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]]
+            let formacorrandom = formacor.shuffled()
+            var i = 0
+            while imageTu.count != 15 && i != 3{
+                imageTu.append(randomforma[i])
+                imageTu.append(randomcondi[i])
+                imageTu.append(randomcores[i])
+                imageTu.append(igualimg[0])
+                if (randomcondi[i] == "e"){
+                    for x in formacorrandom{
+                        if  x == randomforma[i] + randomcores[i]{
+                            imageTu.append(x)
                         }
-                }
-                i = i + 1
-            }else{
-                for x in formacorrandom{
-                    if  x.contains(randomforma[i]){
-                        imageTu.append(x)
-                        break
-                }
-                    if  x.contains(randomcores[i]){
-                        imageTu.append(x)
-                        break
                     }
+                    i = i + 1
+                }else{
+                    for x in formacorrandom{
+                        if  x.contains(randomforma[i]){
+                            imageTu.append(x)
+                            break
+                        }
+                        if  x.contains(randomcores[i]){
+                            imageTu.append(x)
+                            break
+                        }
+                    }
+                    i = i + 1
+                }}
+            if (((imageTu[4] != imageTu[9]) && (imageTu[4] != imageTu[14]) && (imageTu[9] != imageTu[14])) && (imageTu[1] != imageTu[6])){
+                ok = true
             }
-                 i = i + 1
+            else{
+                ok = false
+                imageTu = [String]()
+            }
+            
+            
         }
-        }
-
         
-        
-    }
-    
+}
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
