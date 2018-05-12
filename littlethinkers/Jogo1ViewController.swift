@@ -38,6 +38,8 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         dicas.layer.cornerRadius = dicas.bounds.width*0.1
+        dicas.layer.borderColor = UIColor.red.cgColor
+        dicas.layer.borderWidth = 1.0
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
@@ -47,13 +49,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         tempo.frame = CGRect(x: 67, y: 79, width: 40, height: 42)
         tempo.font = UIFont.init(name:"confortaa-bold", size: 25)
         tempo.textAlignment = .center
-        tempo.textColor = UIColor.black
+        tempo.textColor = UIColor(displayP3Red: 62/255, green: 255/255, blue: 109/255, alpha: 1)
         timernumero = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Jogo1ViewController.iniciodojogo), userInfo: nil, repeats: true)
-        pontos.frame = CGRect(x: 34, y: 519, width: 75, height: 0)
-        pontos.backgroundColor = UIColor.red
+        pontos.frame = CGRect(x: 30, y: 519, width: 75, height: 0)
+        pontos.backgroundColor = UIColor(patternImage: UIImage(named: "points-bar")!)
         self.view.addSubview(pontos)
         self.view.addSubview(tempo)
-
         let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
         let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
         let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
@@ -115,7 +116,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
+                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(novacell, at: posicao)
                     quadrojogo.reloadData()
@@ -155,7 +156,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
+                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
@@ -200,7 +201,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
+                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
@@ -243,7 +244,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
+                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
