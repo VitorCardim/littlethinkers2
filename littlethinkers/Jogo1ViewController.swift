@@ -11,7 +11,7 @@ import QuartzCore
 // 34 519 75 0
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     var timernumero = Timer()
-    var segundos = 30
+    var segundos = 31
     let tempo = UILabel.init()
     var pontonumerico = 0
     var acertos = 0
@@ -115,7 +115,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(altura))
+                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(novacell, at: posicao)
                     quadrojogo.reloadData()
@@ -144,6 +144,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                 }
                 else{
                     pontonumerico = pontonumerico - 1
+                    if pontonumerico > 0{
+                        pontonumerico = 0
+                    }
                     erros = erros + 1
                     var altura = pontonumerico*40
                     if altura > 400{
@@ -152,7 +155,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(altura))
+                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
@@ -197,7 +200,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(altura))
+                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
@@ -229,6 +232,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
                 else{
                     pontonumerico = pontonumerico - 1
+                    if pontonumerico < 0{
+                        pontonumerico = 0
+                    }
                     erros = erros + 1
                     var altura = pontonumerico*40
                     if altura > 400{
@@ -237,7 +243,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(altura))
+                    pontos.frame = CGRect(x: 34, y: 519, width: 75, height: Int(-altura))
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
