@@ -145,7 +145,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                 }
                 else{
                     pontonumerico = pontonumerico - 1
-                    if pontonumerico > 0{
+                    if pontonumerico < 0{
                         pontonumerico = 0
                     }
                     erros = erros + 1
@@ -278,7 +278,6 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         tempo.text = String(segundos)
         if segundos == 0{
             timernumero.invalidate()
-            tempo.text = "Acabou"
             
             
         }
