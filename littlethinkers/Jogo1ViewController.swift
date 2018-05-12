@@ -93,7 +93,6 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             var formacerta = condicaoimages[0] + condicaoimages[2]
             let novacell = formacor[Int(arc4random_uniform(UInt32(formacor.count)))]
             teste.text = "1"
-            var posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
             if condicaoimages[1] == "e"{
                 teste.text = "2"
                 if jogoimages[indexPath.row] == formacerta{
@@ -102,6 +101,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     alturadospontos = alturadospontos - 40
                     //fazer barrinha subir
                     //colocar imagem com temporizador
+                    var posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
@@ -127,6 +127,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     alturadospontos = alturadospontos + 40
                     //fazer barrinha descer
                     //colocar imagem com temporizador
+                    var posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(novacell, at: posicao )
                     quadrojogo.reloadData()
