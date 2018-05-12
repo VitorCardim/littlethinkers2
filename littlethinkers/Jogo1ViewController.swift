@@ -7,34 +7,55 @@
 //
 
 import UIKit
+import QuartzCore
 
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
     
+    var alturadospontos:Int = 0
+    var pontonumerico = 0
+    var bonus = 1
+    @IBOutlet weak var gridponto: UILabel!
+    @IBOutlet weak var timer: UIImageView!
+    @IBOutlet weak var pontos: UIImageView!
     @IBOutlet weak var tempo: UILabel!
     @IBOutlet weak var quadrojogo: UICollectionView!
     @IBOutlet weak var quadrocondicao: UICollectionView!
     @IBOutlet weak var dicas: UIButton!
     @IBOutlet weak var dificuldade: UILabel!
-    var condicaoimages = [["CRAzul","TRAzul","QDAzul","TRRosa"],["QDRosa","CRRosa","CRVerm","TRVerm"], ["boy-1","boy-2","boy-3","girl-1"],["girl-2","girl-3","other-1","other-2"]]
-    var jogoimages = ["CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm","CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm","CRAzul","TRAzul","QDAzul","TRRosa","QDRosa","CRRosa","CRVerm","TRVerm","QDVerm"]
+    var condicaoimages = [String]()
+    var jogoimages = [String]()
     //Possibilidades e Arrays bases
     var condicoes = ["e","ou"]
-    var formastra = ["tri-tra","cir-tra","trap-tra","cir-tra"]
-    var cores = ["Rosa","Verde","Azul","Amarelo"]
+    var formas = ["triangulo","circulo","trapezio","quadrado"]
+    var cores = ["rosa","verde","azul","amarelo"]
+    var igualimg = ["igual"]
+    var formacor = ["circuloamarelo", "circuloazul","circuloblue","circulolara","circulolima","circulorosa","circuloverde","circulovermelho","quadradoamarelo","quadradoazul","quadradoblue","quadradolara","quadradolima","quadradorosa","quadradoverde","quadradovermelho","trianguloamarelo", "trianguloazul","trianguloblue","triangulolara","triangulolima","triangulorosa","trianguloverde","triangulovermelho","trapezioamarelo", "trapezioazul","trapezioblue","trapeziolara","trapeziolima","trapeziorosa","trapezioverde","trapeziovermelho"]
     
-    
-    
-    
+
+    @IBOutlet weak var teste: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dicas.layer.cornerRadius = dicas.bounds.width*0.8
-        tempo.layer.cornerRadius = tempo.bounds.width*0.8
+        tempo.layer.cornerRadius = tempo.bounds.width / 2
+        dicas.layer.cornerRadius = dicas.bounds.width*0.1
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
         quadrojogo.dataSource = self
+        gridponto.layer.borderColor = UIColor.red.cgColor
+        gridponto.layer.borderWidth = 1.0
+        
+        let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
+        let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
+        let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
+        condicaoimages.append(randomforma)
+        condicaoimages.append(randomcondi)
+        condicaoimages.append(randomcores)
+        let formacorrandom = formacor.shuffled()
+        for x in formacorrandom[0..<24]{
+            jogoimages.append(x)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,10 +80,74 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             return cellJ
         }else{
             let cellC:Jogo1CondicaoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCondicao", for: indexPath) as! Jogo1CondicaoCollectionViewCell
-            cellC.image1.image = UIImage(named:condicaoimages[0][indexPath.row])
+            cellC.image1.image = UIImage(named:condicaoimages[indexPath.row])
             return cellC
             }
+        
+        
 }
-
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView == self.quadrojogo{
+            let cellJ = collectionView.cellForItem(at: indexPath)
+            var formacerta = condicaoimages[0] + condicaoimages[2]
+            let novacell = formacor[Int(arc4random_uniform(UInt32(formacor.count)))]
+            teste.text = "1"
+            var posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
+            if condicaoimages[1] == "e"{
+                teste.text = "2"
+                if jogoimages[indexPath.row] == formacerta{
+                    teste.text = "3"
+                    pontonumerico = pontonumerico + 1
+                    alturadospontos = alturadospontos - 40
+                    //fazer barrinha subir
+                    //colocar imagem com temporizador
+                    jogoimages.remove(at: posicao )
+                    jogoimages.insert(novacell, at: posicao )
+                    quadrojogo.reloadData()
+                    tempo.text = String(Int(tempo.text!)! + bonus)
+                    bonus = bonus + 1
+                    for x in jogoimages{
+                        if jogoimages[indexPath.row] == x{
+                            break
+                        }
+                        else{
+                            jogoimages = []
+                            let formacorrandom = formacor.shuffled()
+                            for x in formacorrandom[0..<24]{
+                                jogoimages.append(x)
+                            }
+                            break
+                            
+                        }
+                    }
+                }
+                else{
+                    pontonumerico = pontonumerico - 1
+                    alturadospontos = alturadospontos + 40
+                    //fazer barrinha descer
+                    //colocar imagem com temporizador
+                    jogoimages.remove(at: posicao )
+                    jogoimages.insert(novacell, at: posicao )
+                    quadrojogo.reloadData()
+                    tempo.text = String(Int(tempo.text!)! + bonus)
+                    bonus = 0
+                    for x in jogoimages{
+                        if jogoimages[indexPath.row] == x{
+                            break
+                        }
+                        else{
+                            jogoimages = []
+                            let formacorrandom = formacor.shuffled()
+                            for x in formacorrandom[0..<24]{
+                                jogoimages.append(x)
+                            }
+                            break
+                            
+                        }
+                    }
 }
+}
+}
+                
+
