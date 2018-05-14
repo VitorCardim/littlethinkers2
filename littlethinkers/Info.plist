@@ -41,5 +41,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Comfortaa-Bold.tff</string>
+		<string>Comfortaa-Light.tff</string>
+		<string>Comfortaa-Regular.tff</string>
+	</array>
 </dict>
 </plist>

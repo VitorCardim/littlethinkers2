@@ -20,11 +20,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     var verificador = Bool()
     let pontos = UILabel.init()
     @IBOutlet weak var gridponto: UILabel!
-    @IBOutlet weak var timer: UIImageView!
     @IBOutlet weak var quadrojogo: UICollectionView!
     @IBOutlet weak var quadrocondicao: UICollectionView!
-    @IBOutlet weak var dicas: UIButton!
-    @IBOutlet weak var dificuldade: UILabel!
+    var dificuldade = "1"
     var condicaoimages = [String]()
     var jogoimages = [String]()
     //Possibilidades e Arrays bases
@@ -41,22 +39,19 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dicas.layer.cornerRadius = dicas.bounds.width*0.1
-        dicas.layer.borderColor = UIColor.red.cgColor
-        dicas.layer.borderWidth = 1.0
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
         quadrojogo.dataSource = self
         gridponto.layer.borderColor = UIColor.red.cgColor
         gridponto.layer.borderWidth = 1.0
-        tempo.frame = CGRect(x: 67, y: 79, width: 40, height: 42)
-        tempo.font = UIFont.init(name:"confortaa-bold", size: 25)
+        tempo.frame = CGRect(x: 10, y: 140, width: 45, height: 45)
+        tempo.font = UIFont.init(name:"confortaa-bold", size: 45)
         tempo.textAlignment = .center
-        tempo.textColor = UIColor(displayP3Red: 62/255, green: 255/255, blue: 109/255, alpha: 1)
+        tempo.textColor = UIColor.black
         timernumero = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Jogo1ViewController.iniciodojogo), userInfo: nil, repeats: true)
-        pontos.frame = CGRect(x: 30, y: 519, width: 75, height: 0)
-        pontos.backgroundColor = UIColor(patternImage: UIImage(named: "points-bar")!)
+        pontos.frame = CGRect( x: 11 , y: 649 , width: 43, height: 0)
+        pontos.backgroundColor = UIColor(displayP3Red: 193/255, green: 255/255, blue: 151/255, alpha: 1)
         self.view.addSubview(pontos)
         self.view.addSubview(tempo)
         let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
@@ -67,7 +62,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         condicaoimages.append(randomcores)
         let formacorrandom = formacor.shuffled()
         
-        for x in formacorrandom[0..<24]{
+        for x in formacorrandom[0..<28]{
             jogoimages.append(x)
         }
         var verificador0 = true
@@ -81,7 +76,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             while verificador0 == true{
                 jogoimages = []
                 let formacorrandom = formacor.shuffled()
-                for x in formacorrandom[0..<24]{
+                for x in formacorrandom[0..<28]{
                     jogoimages.append(x)}
                 for x in jogoimages{
                     if formacerta0 == x{
@@ -104,7 +99,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         if collectionView == self.quadrojogo{
             return jogoimages.count
         }
-        return condicaoimages[0].count
+        return condicaoimages.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.quadrojogo{
@@ -124,26 +119,30 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == self.quadrojogo{
             let cellJ = collectionView.cellForItem(at: indexPath)
-            let formacerta = condicaoimages[0] + condicaoimages[2]
+            var formacerta = condicaoimages[0] + condicaoimages[2]
             var novacell = formacor[Int(arc4random_uniform(UInt32(formacor.count)))]
             let posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
-            let formaerrada = jogoimages[indexPath.row]
+            var formaerrada = jogoimages[indexPath.row]
             verificador = true
             if condicaoimages[1] == "e"{
                 if jogoimages[indexPath.row] == formacerta{
                     pontonumerico = pontonumerico + 1
+                    if pontonumerico > 20 {
+                        pontonumerico = 20
+                    }
                     acertos = acertos + 1
-                    var altura = pontonumerico*40
-                    if altura > 400{
-                        altura = 400
+                    var altura = pontonumerico*((510)/20)
+                    if altura > 510{
+                        altura = 510
                     }
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
+                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var certo = formacerta + "correct"
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(certo, at: posicao)
+                    quadrojogo.reloadData()
                     tempo.text = String(Int(tempo.text!)! + bonus)
                     if Int(tempo.text!)! + bonus > 30{
                         tempo.text = String(30)
@@ -152,46 +151,39 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if bonus > 3{
                         bonus = 3
                     }
-                    quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self.jogoimages.remove(at: posicao)
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)
-                        for x in self.jogoimages{
-                            if formacerta == x{
-                                self.verificador = false
-                                break}
-                        }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         if self.verificador == true{
-                            while self.self.verificador == true{
+                            while self.verificador == true{
                                 self.jogoimages = []
-                                let formacorrandom = self.self.formacor.shuffled()
-                                for x in formacorrandom[0..<24]{
+                                let formacorrandom = self.formacor.shuffled()
+                                for x in formacorrandom[0..<28]{
                                     self.jogoimages.append(x)}
                                 for x in self.jogoimages{
                                     if formacerta == x{
-                                        self.self.verificador = false
+                                        self.verificador = false
+                                        self.quadrojogo.reloadData()
                                         break}
-                            }}
-                            self.quadrojogo.reloadData()}
-                    }}
+                                }
+                            }
+                        }
+                    }
+                }
                 else{
                     pontonumerico = pontonumerico - 1
                     if pontonumerico < 0{
                         pontonumerico = 0
                     }
                     erros = erros + 1
-                    var altura = pontonumerico*40
-                    if altura > 400{
-                        altura = 400
+                    var altura = pontonumerico*((510)/20)
+                    if altura > 510{
+                        altura = 510
                     }
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
+                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var errado = formaerrada + "cross"
-                    jogoimages.remove(at: posicao )
+                    jogoimages.remove(at: posicao)
                     jogoimages.insert(errado, at: posicao )
                     tempo.text = String(Int(tempo.text!)! - 1)
                     if Int(tempo.text!)! < 0{
@@ -199,30 +191,15 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     }
                     bonus = 1
                     quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao)
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)
-                        for x in self.jogoimages{
-                        if formacerta == x{
-                            self.verificador = false}
-                    }
-                        if self.verificador == true{
-                            while self.verificador == true{
-                            self.jogoimages = []
-                                let formacorrandom = self.self.formacor.shuffled()
-                            for x in formacorrandom[0..<24]{
-                                self.jogoimages.append(x)}
-                                for x in self.self.jogoimages{
-                                if formacerta == x{
-                                    self.verificador = false
-                                    break}
-                            }}
-                            }
-                        self.quadrojogo.reloadData()
+                        self.jogoimages.insert(novacell, at: posicao)}
+                    self.quadrojogo.reloadData()
                 }
-                }}
+            }
+            
             else{
                 var condi1 = 0
                 var condi2 = 0
@@ -236,15 +213,19 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     condi3 = 1 }
                 if (condi1 | condi2 | condi3) == 1{
                     pontonumerico = pontonumerico + 1
+                    if pontonumerico > 20 {
+                        pontonumerico = 20
+                    }
                     acertos = acertos + 1
-                    var altura = pontonumerico*40
-                    if altura > 400{
-                        altura = 400
+                    var altura = pontonumerico*((510)/20)
+                    if altura > 510{
+                        altura = 510
                     }
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
+                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                    formacerta = jogoimages[posicao]
                     var certo = formacerta + "correct"
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(certo, at: posicao)
@@ -273,7 +254,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             while self.verificador == true{
                                 self.jogoimages = []
                                 let formacorrandom = self.formacor.shuffled()
-                                for x in formacorrandom[0..<24]{
+                                for x in formacorrandom[0..<28]{
                                     self.jogoimages.append(x)}
                                 for x in self.jogoimages{
                                 if formacerta == x{
@@ -292,14 +273,15 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         pontonumerico = 0
                     }
                     erros = erros + 1
-                    var altura = pontonumerico*40
-                    if altura > 400{
-                        altura = 400
+                    var altura = pontonumerico*((510)/20)
+                    if altura > 510{
+                        altura = 510
                     }
                     if altura < 0{
                         altura = 0
                     }
-                    pontos.frame = CGRect(x: 30, y: 519, width: 80, height: Int(-altura))
+                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                    formaerrada = jogoimages[posicao]
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(errado, at: posicao )
@@ -325,7 +307,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             while self.self.verificador == true{
                                 self.jogoimages = []
                                 let formacorrandom = self.formacor.shuffled()
-                                for x in formacorrandom[0..<24]{
+                                for x in formacorrandom[0..<28]{
                                     self.jogoimages.append(x)}
                                 for x in self.jogoimages{
                                     if formacerta == x{
@@ -344,6 +326,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         if segundos == 0{
             timernumero.invalidate()}
         }
+    
+   /// @objc func delayjogada(){
+      ///  segundosjogada += 1
+      ///  tempojogada.text = String(segundos)}
+    
     func garantir(cell:String, ary:Array<String>)-> Bool{
         for x in ary{
             if x == cell {
