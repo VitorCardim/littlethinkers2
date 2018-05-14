@@ -145,6 +145,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(certo, at: posicao)
                     tempo.text = String(Int(tempo.text!)! + bonus)
+                    if Int(tempo.text!)! + bonus > 30{
+                        tempo.text = String(30)
+                    }
                     bonus = bonus + 1
                     if bonus > 3{
                         bonus = 3
@@ -152,7 +155,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self.jogoimages.remove(at: posicao)
-                        while self.garantir(cell: novacell, ary: self.jogoimages){
+                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao)
                         for x in self.jogoimages{
@@ -191,11 +194,14 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(errado, at: posicao )
                     tempo.text = String(Int(tempo.text!)! - 1)
+                    if Int(tempo.text!)! < 0{
+                        tempo.text = String(0)
+                    }
                     bonus = 1
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                         self.jogoimages.remove(at: posicao)
-                        while self.garantir(cell: novacell, ary: self.jogoimages){
+                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao)
                         for x in self.jogoimages{
@@ -244,13 +250,16 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     jogoimages.insert(certo, at: posicao)
                     quadrojogo.reloadData()
                     tempo.text = String(Int(tempo.text!)! + bonus)
+                    if Int(tempo.text!)! + bonus > 30{
+                        tempo.text = String(30)
+                    }
                     bonus = bonus + 1
                     if bonus > 3{
                         bonus = 3
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao)
-                        while self.garantir(cell: novacell, ary: self.jogoimages){
+                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao)
                         self.verificador = true
@@ -295,11 +304,14 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(errado, at: posicao )
                     tempo.text = String(Int(tempo.text!)! - 1)
+                    if Int(tempo.text!)! < 0{
+                        tempo.text = String(0)
+                    }
                     bonus = 1
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                         self.jogoimages.remove(at: posicao )
-                        while self.garantir(cell: novacell, ary: self.jogoimages){
+                        while self.garantir(cell: novacell, ary: self.jogoimages) == false{
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao )
                         self.verificador = true
