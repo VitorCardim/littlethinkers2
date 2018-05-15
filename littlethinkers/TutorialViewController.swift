@@ -10,10 +10,14 @@ import UIKit
 
 class TutorialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
+    @IBOutlet weak var melhopont: UILabel!
     @IBOutlet weak var comojogar: UILabel!
     @IBOutlet weak var quadroTutorial: UICollectionView!
     @IBOutlet weak var continuar: UIButton!
+    var avatar = Int()
+    var aluno = String()
     var imageTu = [String]()
+    var pontos = String()
     var formas = ["triangulo", "circulo", "trapezio", "quadrado", "losango"]
     var cores = ["rosa","verde","azul","amarelo","lima","blue","lara", "vermelho"]
     var igualimg = ["igual"]
@@ -23,6 +27,7 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        melhopont.text = pontos
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         quadroTutorial.delegate = self
         quadroTutorial.dataSource = self
@@ -87,30 +92,43 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         let cell:TutorialCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageTutorial", for: indexPath) as! TutorialCollectionViewCell
         cell.image1.image = UIImage(named:imageTu[indexPath.row])
         return cell}
+    
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    let enviarnome = segue.destination as! Jogo1ViewController
+    let enviaravatar = segue.destination as! Jogo1ViewController
+    enviaravatar.avatar = avatar
+    enviarnome.aluno = aluno
 }
-extension MutableCollection {
-    /// Shuffles the contents of this collection.
-    mutating func shuffle() {
-        let c = count
-        guard c > 1 else { return }
-        
-        for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
-            // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
-            let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
-            let i = index(firstUnshuffled, offsetBy: d)
-            swapAt(firstUnshuffled, i)
+}
+    extension MutableCollection {
+        /// Shuffles the contents of this collection.
+        mutating func shuffle() {
+            let c = count
+            guard c > 1 else { return }
+            
+            for (firstUnshuffled, unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+                // Change `Int` in the next line to `IndexDistance` in < Swift 4.1
+                let d: Int = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+                let i = index(firstUnshuffled, offsetBy: d)
+                swapAt(firstUnshuffled, i)
+            }
         }
     }
-}
-
-extension Sequence {
-    /// Returns an array with the contents of this sequence, shuffled.
-    func shuffled() -> [Element] {
-        var result = Array(self)
-        result.shuffle()
-        return result
+    
+    extension Sequence {
+        /// Returns an array with the contents of this sequence, shuffled.
+        func shuffled() -> [Element] {
+            var result = Array(self)
+            result.shuffle()
+            return result
+        }
+        
     }
-}
+
+
+
+
 
 
 

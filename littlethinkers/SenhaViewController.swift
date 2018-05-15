@@ -9,7 +9,7 @@
 import UIKit
 
 class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-    
+    var pontos = String()
     @IBOutlet weak var codigoacesso: UILabel!
     @IBOutlet weak var apagar: UIButton!
     @IBOutlet weak var continuar: UIButton!
@@ -17,10 +17,6 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var quadroSenha: UICollectionView!
     var aluno = ""
     var avatar = Int()
-    var acertotemp = Int()
-    var acertototal = Int()
-    var errotemp = Int()
-    
     
     var imageTeclado = ["circuloazul","circulorosa","circulovermelho","trianguloazul","triangulorosa","triangulovermelho","quadradoazul","quadradorosa","quadradovermelho"]
     var imageSenha = [String]()
@@ -125,6 +121,17 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
         }
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let enviarnome = segue.destination as! TutorialViewController
+        let enviaravatar = segue.destination as! TutorialViewController
+        enviaravatar.avatar = avatar
+        enviarnome.aluno = aluno
+        if pontos != ""{
+            let enviarpontos = segue.destination as! TutorialViewController
+            enviarpontos.pontos = pontos
+        
+    }
+}
 }
 
 

@@ -11,9 +11,11 @@ import QuartzCore
 // 34 519 75 0
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
-    
+    var avatar = Int()
+    var aluno = String()
+    @IBOutlet weak var fimatividade: UIButton!
     @IBOutlet weak var voltarparatelasenha: UIButton!
+    var tempoprofessora = Int()
     var timernumero = Timer()
     var segundos = 61
     let tempo = UILabel.init()
@@ -64,6 +66,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         condicaoimages.append(randomforma)
         condicaoimages.append(randomcondi)
         condicaoimages.append(randomcores)
+        
         let formacorrandom = formacor.shuffled()
         
         for x in formacorrandom[0..<28]{
@@ -131,15 +134,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             if condicaoimages[1] == "e" && dificuldade == "1"{
                 if jogoimages[indexPath.row] == formacerta{
                     pontonumerico = pontonumerico + 1
-                    var altura = pontonumerico*((510)/20)
+                    
                     if pontonumerico == 20 {
                         dificuldade = "2"
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                             self.pontonumerico = 0
-                            altura = self.pontonumerico*((510)/20)
-                            
-                        }
                     }
+                    var altura = pontonumerico*((510)/20)
                     acertos = acertos + 1
                     if altura > 510{
                         altura = 510
@@ -155,9 +155,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     segundos = Int(tempo.text!)! + bonus
                     if segundos > 60{
                         segundos = 60}
+                    tempo.text = String(segundos)
                     bonus = bonus + 1
-                    if bonus > 5{
-                        bonus = 5
+                    if bonus > 2{
+                        bonus = 2
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         if self.dificuldade == "2"{
@@ -203,17 +204,20 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! + bonus
-                    if segundos < 0 {
+                    segundos = Int(tempo.text!)! - 1
+                    if segundos < 0{
                         segundos = 0}
+                    tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao)
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)}
-                    self.quadrojogo.reloadData()
+                        self.jogoimages.insert(novacell, at: posicao)
+                        self.quadrojogo.reloadData()
+                    }
+                    
                 }
             }
             
@@ -230,15 +234,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     condi3 = 1 }
                 if (condi1 | condi2 | condi3) == 1{
                     pontonumerico = pontonumerico + 1
-                    var altura = pontonumerico*((510)/20)
                     if pontonumerico == 20 {
                         dificuldade = "2"
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                            self.pontonumerico = 0
-                            altura = self.pontonumerico*((510)/20)
-                            
-                        }
+                        self.pontonumerico = 0
                     }
+                    var altura = pontonumerico*((510)/20)
                     acertos = acertos + 1
                     if altura > 510{
                         altura = 510
@@ -252,15 +252,15 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(certo, at: posicao)
                     quadrojogo.reloadData()
-                    tempo.text = String(Int(tempo.text!)! + bonus)
                     segundos = Int(tempo.text!)! + bonus
                     if segundos > 60{
                         segundos = 60}
+                    tempo.text = String(segundos)
                     bonus = bonus + 1
-                    if bonus > 3{
-                        bonus = 3
+                    if bonus > 2{
+                        bonus = 2
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                         self.jogoimages.remove(at: posicao)
                         if self.dificuldade == "2"{
                             let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
@@ -271,8 +271,23 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             self.condicaoimages.append(randomcondi)
                             self.condicaoimages.append(randomcores)
                             self.quadrocondicao.reloadData()
+                            if self.verificador == true{
+                                while self.verificador == true{
+                                    self.jogoimages = []
+                                    let formacorrandom = self.formacor.shuffled()
+                                    for x in formacorrandom[0..<28]{
+                                        self.jogoimages.append(x)}
+                                    for x in self.jogoimages{
+                                        if formacerta == x{
+                                            self.verificador = false
+                                            self.quadrojogo.reloadData()
+                                            break}
+                                    }
+                                }
+                            }
                         }
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
+                        else {
+                            while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao)
                         self.verificador = true
@@ -298,6 +313,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         self.quadrojogo.reloadData()
                     }
                 }
+                }
                     
 
                 else{
@@ -318,12 +334,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! + bonus
+                    segundos = Int(tempo.text!)! - 1
                     if segundos < 0{
                         segundos = 0}
+                    tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao )
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false{
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
@@ -371,11 +388,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     quadrojogo.reloadData()
                     segundos = Int(tempo.text!)! + bonus
                     if segundos > 60{
-                        segundos = 60
-                    }
+                        segundos = 60}
+                    tempo.text = String(segundos)
                     bonus = bonus + 1
-                    if bonus > 6{
-                        bonus = 6
+                    if bonus > 3{
+                        bonus = 3
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
@@ -422,9 +439,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! + bonus
+                    segundos = Int(tempo.text!)! - 1
                     if segundos < 0{
                         segundos = 0}
+                    tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
@@ -484,7 +502,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if bonus > 3{
                         bonus = 3
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                         self.jogoimages.remove(at: posicao)
                         let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                         let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
@@ -494,6 +512,24 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         self.condicaoimages.append(randomcondi)
                         self.condicaoimages.append(randomcores)
                         self.quadrocondicao.reloadData()
+                        if self.condicaoimages[1] == "e"{
+                            var formacerta2 = self.condicaoimages[0] + self.condicaoimages[2]
+                            if self.verificador == true{
+                                while self.verificador == true{
+                                    self.jogoimages = []
+                                    let formacorrandom = self.formacor.shuffled()
+                                    for x in formacorrandom[0..<28]{
+                                        self.jogoimages.append(x)}
+                                    for x in self.jogoimages{
+                                        if formacerta2 == x{
+                                            self.verificador = false
+                                            self.quadrojogo.reloadData()
+                                            break}
+                                    }
+                                }
+                            }
+                        }
+                        else{
                         var formacertadif2 = self.condicaoimages[0] + self.condicaoimages[2]
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
@@ -522,6 +558,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     }
                     
                 }
+                }
                 else{
                     pontonumerico = pontonumerico - 1
                     if pontonumerico < 0{
@@ -540,12 +577,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao )
                     jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! + bonus
+                    segundos = Int(tempo.text!)! - 1
                     if segundos < 0{
                         segundos = 0}
+                    tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao )
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false{
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
@@ -577,24 +615,35 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             
 
 
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        var pontos = (acertos - erros)*10
+        if pontos < 0 {
+            pontos = 0
+        }
+        var pontosmelhor = String(pontos) + " pontos"
+        let enviarpontos = segue.destination as! SenhaViewController
+        enviarpontos.pontos = pontosmelhor
+    }
     @objc func iniciodojogo(){
         segundos -= 1
         tempo.text = String(segundos)
+        //if tempoprofessora == 0{
+         //   self .performSegue(withIdentifier: "fim", sender: self)
+        //}
         if segundos == 0{
             timernumero.invalidate()
             self .performSegue(withIdentifier: "voltarsenha", sender: self)
         }
-        }
-    
-   /// @objc func delayjogada(){
-      ///  segundosjogada += 1
-      ///  tempojogada.text = String(segundos)}
+    }
     
     func garantir(cell:String, ary:Array<String>)-> Bool{
         for x in ary{
             if x == cell {
                 return false}}
         return true}
+
+
     }
+
 
 
