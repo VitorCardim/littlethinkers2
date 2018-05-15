@@ -14,6 +14,7 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     @IBOutlet weak var quadroAvatares: UICollectionView!
     @IBOutlet weak var welcome: UILabel!
     var student = ""
+    var numeroAvatar = Int()
     var images = ["boy-1","boy-2","boy-3","girl-1","girl-2","girl-3","other-1","other-2","other-3"]
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,7 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         continuar.isEnabled = true
         continuar.setTitleColor(UIColor.black, for: .normal)
         continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+        numeroAvatar = images.index(of: images[indexPath.row])!
 
         
     }
@@ -60,4 +62,10 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         cell?.layer.borderWidth = 0
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let enviarnome = segue.destination as! SenhaViewController
+        let enviaravatar = segue.destination as! SenhaViewController
+        enviaravatar.avatar = numeroAvatar
+        enviarnome.aluno = student
+}
 }

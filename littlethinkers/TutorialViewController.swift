@@ -14,11 +14,11 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var quadroTutorial: UICollectionView!
     @IBOutlet weak var continuar: UIButton!
     var imageTu = [String]()
-    var formas = ["triangulo","circulo","trapezio","quadrado"]
-    var cores = ["rosa","verde","azul","amarelo"]
+    var formas = ["triangulo", "circulo", "trapezio", "quadrado", "losango"]
+    var cores = ["rosa","verde","azul","amarelo","lima","blue","lara", "vermelho"]
     var igualimg = ["igual"]
     var condicoes = ["e","ou"]
-    var formacor = ["circuloamarelo", "circuloazul","circuloblue","circulolara","circulolima","circulorosa","circuloverde","circulovermelho","quadradoamarelo","quadradoazul","quadradoblue","quadradolara","quadradolima","quadradorosa","quadradoverde","quadradovermelho","trianguloamarelo", "trianguloazul","trianguloblue","triangulolara","triangulolima","triangulorosa","trianguloverde","triangulovermelho","trapezioamarelo", "trapezioazul","trapezioblue","trapeziolara","trapeziolima","trapeziorosa","trapezioverde","trapeziovermelho"]
+    var formacor =    ["circuloamarelo", "circuloazul", "circuloblue", "circulolara", "circulolima", "circulorosa", "circuloverde", "circulovermelho", "quadradoamarelo", "quadradoazul", "quadradoblue", "quadradolara", "quadradolima", "quadradorosa", "quadradoverde", "quadradovermelho", "trianguloamarelo", "trianguloazul", "trianguloblue", "triangulolara", "triangulolima", "triangulorosa", "trianguloverde", "triangulovermelho", "trapezioamarelo", "trapezioazul", "trapezioblue", "trapeziolara", "trapeziolima", "trapeziorosa", "trapezioverde", "trapeziovermelho", "losangoamarelo", "losangoazul", "losangoblue", "losangolara", "losangolima", "losangorosa", "losangoverde", "losangovermelho"]
     
     
     override func viewDidLoad() {

@@ -15,6 +15,12 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var continuar: UIButton!
     @IBOutlet weak var tecladoSenhas: UICollectionView!
     @IBOutlet weak var quadroSenha: UICollectionView!
+    var aluno = ""
+    var avatar = Int()
+    var acertotemp = Int()
+    var acertototal = Int()
+    var errotemp = Int()
+    
     
     var imageTeclado = ["circuloazul","circulorosa","circulovermelho","trianguloazul","triangulorosa","triangulovermelho","quadradoazul","quadradorosa","quadradovermelho"]
     var imageSenha = [String]()
@@ -117,7 +123,8 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
                 
                 
             }
-        }}
+        }
+    }
 }
 
 

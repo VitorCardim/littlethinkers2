@@ -23,9 +23,6 @@
 		5F78C41320A9F86A00ABBC31 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41020A9F86900ABBC31 /* Comfortaa-Regular.ttf */; };
 		5F78C41420A9F86A00ABBC31 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41120A9F86900ABBC31 /* Comfortaa-Bold.ttf */; };
 		5F78C41520A9F86A00ABBC31 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41220A9F86A00ABBC31 /* Comfortaa-Light.ttf */; };
-		5F78C41920AA2D3E00ABBC31 /* igual.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41620AA2D3D00ABBC31 /* igual.png */; };
-		5F78C41A20AA2D3E00ABBC31 /* ou.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41720AA2D3D00ABBC31 /* ou.png */; };
-		5F78C41B20AA2D3E00ABBC31 /* e.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F78C41820AA2D3D00ABBC31 /* e.png */; };
 		5F9F3F6120A4BED700E1C7C2 /* Jogo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6020A4BED700E1C7C2 /* Jogo1ViewController.swift */; };
 		5F9F3F6520A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6420A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift */; };
 		5F9F3F6720A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6620A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift */; };
@@ -73,9 +70,6 @@
 		5F78C41020A9F86900ABBC31 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../../Downloads/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		5F78C41120A9F86900ABBC31 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../../Downloads/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		5F78C41220A9F86A00ABBC31 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../../../Downloads/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
-		5F78C41620AA2D3D00ABBC31 /* igual.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = igual.png; path = ../../../../Downloads/igual.png; sourceTree = "<group>"; };
-		5F78C41720AA2D3D00ABBC31 /* ou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ou.png; path = ../../../../Downloads/ou.png; sourceTree = "<group>"; };
-		5F78C41820AA2D3D00ABBC31 /* e.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = e.png; path = ../../../../Downloads/e.png; sourceTree = "<group>"; };
 		5F9F3F6020A4BED700E1C7C2 /* Jogo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1ViewController.swift; sourceTree = "<group>"; };
 		5F9F3F6420A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1CondicaoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F9F3F6620A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1JogoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -138,16 +132,13 @@
 				5F5E1E1520A23C130007B73C /* SenhaViewController.swift */,
 				5F5E1E1720A23CE70007B73C /* SenhaColocarCollectionViewCell.swift */,
 				5F5E1E1920A23D030007B73C /* SenhaTecladoCollectionViewCell.swift */,
-				5F13745520A4753D002843C9 /* TutorialCollectionViewCell.swift */,
 				5F13745720A47666002843C9 /* TutorialViewController.swift */,
+				5F13745520A4753D002843C9 /* TutorialCollectionViewCell.swift */,
 				5F9F3F6020A4BED700E1C7C2 /* Jogo1ViewController.swift */,
 				5F9F3F6620A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift */,
 				5F9F3F6420A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift */,
 				5F00552820A09D580002BEBE /* Main.storyboard */,
 				5F00552E20A09D5A0002BEBE /* Assets.xcassets */,
-				5F78C41820AA2D3D00ABBC31 /* e.png */,
-				5F78C41620AA2D3D00ABBC31 /* igual.png */,
-				5F78C41720AA2D3D00ABBC31 /* ou.png */,
 				5F78C41120A9F86900ABBC31 /* Comfortaa-Bold.ttf */,
 				5F78C41220A9F86A00ABBC31 /* Comfortaa-Light.ttf */,
 				5F78C41020A9F86900ABBC31 /* Comfortaa-Regular.ttf */,
@@ -284,9 +275,6 @@
 				5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */,
 				5F78C41420A9F86A00ABBC31 /* Comfortaa-Bold.ttf in Resources */,
 				5F00552F20A09D5A0002BEBE /* Assets.xcassets in Resources */,
-				5F78C41920AA2D3E00ABBC31 /* igual.png in Resources */,
-				5F78C41A20AA2D3E00ABBC31 /* ou.png in Resources */,
-				5F78C41B20AA2D3E00ABBC31 /* e.png in Resources */,
 				5F78C41520A9F86A00ABBC31 /* Comfortaa-Light.ttf in Resources */,
 				5F00552A20A09D580002BEBE /* Main.storyboard in Resources */,
 			);
