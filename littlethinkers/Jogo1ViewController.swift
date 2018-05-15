@@ -172,13 +172,17 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             self.quadrocondicao.reloadData()
                         }
                         if self.verificador == true{
+                            self.jogoimages = []
+                            let formacertacontinuar = self.condicaoimages[0] + self.condicaoimages[2]
+                            let formacorrandom = self.formacor.shuffled()
+                            for x in formacorrandom[0..<28]{
+                                self.jogoimages.append(x)}
                             while self.verificador == true{
                                 self.jogoimages = []
-                                let formacorrandom = self.formacor.shuffled()
                                 for x in formacorrandom[0..<28]{
                                     self.jogoimages.append(x)}
                                 for x in self.jogoimages{
-                                    if formacerta == x{
+                                    if formacertacontinuar == x{
                                         self.verificador = false
                                         self.quadrojogo.reloadData()
                                         break}
@@ -271,14 +275,18 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             self.condicaoimages.append(randomcondi)
                             self.condicaoimages.append(randomcores)
                             self.quadrocondicao.reloadData()
+                            self.jogoimages = []
+                            let formacertacontinuar = self.condicaoimages[0] + self.condicaoimages[2]
+                            let formacorrandom = self.formacor.shuffled()
+                            for x in formacorrandom[0..<28]{
+                                self.jogoimages.append(x)}
                             if self.verificador == true{
                                 while self.verificador == true{
                                     self.jogoimages = []
-                                    let formacorrandom = self.formacor.shuffled()
                                     for x in formacorrandom[0..<28]{
                                         self.jogoimages.append(x)}
                                     for x in self.jogoimages{
-                                        if formacerta == x{
+                                        if formacertacontinuar == x{
                                             self.verificador = false
                                             self.quadrojogo.reloadData()
                                             break}

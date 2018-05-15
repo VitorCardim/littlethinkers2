@@ -58,7 +58,7 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
     }
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
-        cell?.backgroundColor = UIColor(displayP3Red: 130/255, green: 214/255, blue: 60/255, alpha: 1)
+        cell?.backgroundColor = #colorLiteral(red: 0.5098039216, green: 0.8392156863, blue: 0.2352941176, alpha: 1)
         cell?.layer.borderWidth = 0
         
     }

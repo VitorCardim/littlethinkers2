@@ -98,7 +98,7 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if collectionView == self.tecladoSenhas{
         let cellT = collectionView.cellForItem(at: indexPath)
-        cellT?.backgroundColor = UIColor(displayP3Red: 130/255, green: 214/255, blue: 60/255, alpha: 1)
+        cellT?.backgroundColor = #colorLiteral(red: 0.5098039216, green: 0.8392156863, blue: 0.2352941176, alpha: 1)
             cellT?.layer.borderWidth = 0}}
         
         @IBAction func voltar(_ sender: UIButton) {
