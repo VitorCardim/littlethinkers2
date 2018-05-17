@@ -24,6 +24,7 @@
 		5F9F3F6120A4BED700E1C7C2 /* Jogo1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6020A4BED700E1C7C2 /* Jogo1ViewController.swift */; };
 		5F9F3F6520A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6420A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift */; };
 		5F9F3F6720A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9F3F6620A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift */; };
+		5FB619E620AE2E6A007C9D18 /* participação.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FB619E520AE2E69007C9D18 /* participação.png */; };
 		5FEFA86D20AB820800CC0F1E /* AcertosEErrosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FEFA86C20AB820800CC0F1E /* AcertosEErrosViewController.swift */; };
 		5FF17F2D20A1CC0A00B74FCE /* AvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */; };
 		5FF17F3720A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */; };
@@ -70,6 +71,12 @@
 		5F9F3F6020A4BED700E1C7C2 /* Jogo1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1ViewController.swift; sourceTree = "<group>"; };
 		5F9F3F6420A4C6BC00E1C7C2 /* Jogo1CondicaoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1CondicaoCollectionViewCell.swift; sourceTree = "<group>"; };
 		5F9F3F6620A4C86B00E1C7C2 /* Jogo1JogoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jogo1JogoCollectionViewCell.swift; sourceTree = "<group>"; };
+		5FB619E520AE2E69007C9D18 /* participação.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "participação.png"; path = "../../../Downloads/participação.png"; sourceTree = "<group>"; };
+		5FB619E720AE2E70007C9D18 /* participação.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "participação.png"; sourceTree = "<group>"; };
+		5FB619E820AE2E81007C9D18 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		5FB619E920AE2E82007C9D18 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		5FB619EA20AE2E83007C9D18 /* SF-Font.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SF-Font.dmg"; path = "../../../../Downloads/Fontes/SF-Font.dmg"; sourceTree = "<group>"; };
+		5FB619EB20AE2E83007C9D18 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		5FEFA86C20AB820800CC0F1E /* AcertosEErrosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcertosEErrosViewController.swift; sourceTree = "<group>"; };
 		5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvaViewController.swift; sourceTree = "<group>"; };
 		5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarChoiceCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +114,7 @@
 				5F00553B20A09D5A0002BEBE /* littlethinkersTests */,
 				5F00554620A09D5A0002BEBE /* littlethinkersUITests */,
 				5F00552220A09D580002BEBE /* Products */,
+				5FB619E520AE2E69007C9D18 /* participação.png */,
 			);
 			sourceTree = "<group>";
 		};
@@ -141,6 +149,11 @@
 				5F00552E20A09D5A0002BEBE /* Assets.xcassets */,
 				5F00553020A09D5A0002BEBE /* LaunchScreen.storyboard */,
 				5F00553320A09D5A0002BEBE /* Info.plist */,
+				5FB619E820AE2E81007C9D18 /* Comfortaa-Bold.ttf */,
+				5FB619E920AE2E82007C9D18 /* Comfortaa-Light.ttf */,
+				5FB619EB20AE2E83007C9D18 /* Comfortaa-Regular.ttf */,
+				5FB619EA20AE2E83007C9D18 /* SF-Font.dmg */,
+				5FB619E720AE2E70007C9D18 /* participação.png */,
 				5F00552B20A09D580002BEBE /* littlethinkers.xcdatamodeld */,
 			);
 			path = littlethinkers;
@@ -271,6 +284,7 @@
 				5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */,
 				5F00552F20A09D5A0002BEBE /* Assets.xcassets in Resources */,
 				5F00552A20A09D580002BEBE /* Main.storyboard in Resources */,
+				5FB619E620AE2E6A007C9D18 /* participação.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
