@@ -144,12 +144,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             if dificuldade == "2"{
                 if jogoimages[indexPath.row] == formacerta{
                     pontonumerico = pontonumerico + 1
-                    if pontonumerico > 20 {
+                    if pontonumerico >= 10 {
                         pontonumerico = 0
                         dificuldade = "3"
                     }
                     acertos = acertos + 1
-                    var altura = pontonumerico*((510)/20)
+                    var altura = pontonumerico*((510)/10)
                     pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var certo = formacerta + "correct"
                     jogoimages.remove(at: posicao)
@@ -193,7 +193,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if pontonumerico < 0{
                         pontonumerico = 0   }
                     erros = erros + 1
-                    var altura = pontonumerico*((510)/20)
+                    var altura = pontonumerico*((510)/10)
                     pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao)
@@ -229,7 +229,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         condi3 = 1 }
                     if (condi1 | condi2 | condi3) == 1{
                         pontonumerico = pontonumerico + 1
-                        if pontonumerico > 20 {
+                        if pontonumerico >= 10 {
                             pontonumerico = 0
                             self.dificuldade = "2" }
                         let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
@@ -239,7 +239,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             randomcondi = "ou"
                         }
                         acertos = acertos + 1
-                        var altura = pontonumerico*((510)/20)
+                        var altura = pontonumerico*((510)/10)
                         pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                         formacerta = jogoimages[posicao]
                         var certo = formacerta + "correct"
@@ -286,7 +286,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             pontonumerico = 0
                         }
                         erros = erros + 1
-                        var altura = pontonumerico*((510)/20)
+                        var altura = pontonumerico*((510)/10)
                         pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                         formaerrada = jogoimages[posicao]
                         var errado = formaerrada + "cross"
