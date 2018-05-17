@@ -8,8 +8,13 @@
 
 import UIKit
 import QuartzCore
-// 34 519 75 0
+import Firebase
+
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    var ref = Database.database().reference()
+    var tempolimite = Double()
+    var tempoprofessora = 1
+    var senha = String()
     
     var pontosarray = Array<Int>()
     
@@ -21,10 +26,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var aluno = String()
     
-
+    let nowtimestamp = Date().timeIntervalSince1970
     @IBOutlet weak var fimatividade: UIButton!
     @IBOutlet weak var voltarparatelasenha: UIButton!
-    var tempoprofessora = Int()
     var timernumero = Timer()
     var segundos = 61
     let tempo = UILabel.init()
@@ -54,7 +58,17 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tempoprofessora = 10
+        ref.child("atividades/\(senha)").observeSingleEvent(of: .value, with: { (snapshot) in
+            let atividade = snapshot.value as? NSDictionary
+            for (chave, valor) in atividade! {
+                let chav = chave as! String
+                if chav == "limitTimestamp" {
+                    self.tempolimite = valor as! Double
+                }
+            }
+        })
+        
+        0
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
@@ -531,8 +545,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         tempo.text = String(segundos)
         
-        if acertos > 100 {
+        if nowtimestamp >= tempolimite {
             tempoprofessora = 0
+            
             self .performSegue(withIdentifier: "fim", sender: self)
             
         }

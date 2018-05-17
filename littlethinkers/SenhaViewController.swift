@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import Firebase
 
 class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    var senhaprofessora:[String] = []
+    var ref = Database.database().reference()
+    var stringsenha = ""
     var pontosarray = Array<Int>()
     var acertosarray = Array<Int>()
     var errosarray = Array<Int>()
     var pontos = String()
+    var senhaenviar = String()
     @IBOutlet weak var codigoacesso: UILabel!
     @IBOutlet weak var apagar: UIButton!
     @IBOutlet weak var continuar: UIButton!
@@ -21,13 +27,26 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
     var aluno = ""
     var avatar = Int()
     
-    var imageTeclado = ["circuloazul","circulorosa","circulovermelho","trianguloazul","triangulorosa","triangulovermelho","quadradoazul","quadradorosa","quadradovermelho"]
+    var imageTeclado = ["senha1","senha2","senha3","senha4","senha5","senha6","senha7","senha8","senha9"]
     var imageSenha = [String]()
     var senha = [Int]()
-    var senhaprofessora:[Int] = [7,4,0]
+    var senhastring = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        ref.child("atividades").observeSingleEvent(of: .value, with: { (snapshot) in
+            let atividadeFirebase = snapshot.value as? NSDictionary
+            for (codigo, _) in atividadeFirebase! {
+                let code = codigo as! String
+                self.senhaprofessora.append(code)
+                
+
+            }
+
+            })
+
+        
         quadroSenha.delegate = self
         quadroSenha.dataSource = self
         tecladoSenhas.delegate = self
@@ -82,13 +101,15 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
             self.codigoacesso.text = ""
             if imageSenha.count != 3 {
                 imageSenha.append(imageTeclado[indexPath.row])
-                senha.append(imageTeclado.index(of: imageTeclado[indexPath.row])!)
+                senha.append(imageTeclado.index(of: imageTeclado[indexPath.row])! + 1)
+                print(senha)
                 quadroSenha.reloadData()
                 continuar.isEnabled = false
                 continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
                 continuar.setTitleColor(UIColor(red:0.50, green:0.65, blue:0.52, alpha:1.0), for: .normal)}
-            if imageSenha.count == 3 && senha == senhaprofessora{
+            if imageSenha.count == 3 && senhaprofessora.contains(String(senha[0])+String(senha[1])+String(senha[2])){
                 continuar.isEnabled = true
+                senhaenviar = String(senha[0]) + String(senha[1]) + String(senha[2])
                 continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
                 continuar.setTitleColor(UIColor.black, for: .normal)}
             if imageSenha.count > 0 {
@@ -133,6 +154,8 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
         let enviarnome = segue.destination as! TutorialViewController
         
         let enviaravatar = segue.destination as! TutorialViewController
+        let enviarsenhaenviar = segue.destination as! TutorialViewController
+        enviarsenhaenviar.senha = senhaenviar
         
         enviaravatar.avatar = avatar
         

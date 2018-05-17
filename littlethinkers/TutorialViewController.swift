@@ -9,7 +9,7 @@
 import UIKit
 
 class TutorialViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+    var senha = String()
     @IBOutlet weak var melhopont: UILabel!
     @IBOutlet weak var comojogar: UILabel!
     @IBOutlet weak var quadroTutorial: UICollectionView!
@@ -106,6 +106,8 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         let enviarnome = segue.destination as! Jogo1ViewController
         
         let enviaravatar = segue.destination as! Jogo1ViewController
+        let enviarsenha = segue.destination as! Jogo1ViewController
+        enviarsenha.senha = senha
         
         enviaravatar.avatar = avatar
         

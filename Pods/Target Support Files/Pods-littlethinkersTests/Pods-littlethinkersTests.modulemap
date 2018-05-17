@@ -1,0 +1,6 @@
+framework module Pods_littlethinkersTests {
+  umbrella header "Pods-littlethinkersTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
