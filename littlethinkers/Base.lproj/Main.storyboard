@@ -724,7 +724,6 @@
         <image name="default-opaco" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Y6q-aJ-IZY"/>
         <segue reference="dZK-37-V4p"/>
         <segue reference="0PU-0K-n9P"/>
     </inferredMetricsTieBreakers>
