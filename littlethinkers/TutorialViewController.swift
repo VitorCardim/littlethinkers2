@@ -17,7 +17,9 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     var avatar = Int()
     var aluno = String()
     var imageTu = [String]()
-    var pontos = String()
+    var pontosarray = Array<Int>()
+    var acertosarray = Array<Int>()
+    var errosarray = Array<Int>()
     var formas = ["triangulo", "circulo", "trapezio", "quadrado", "losango"]
     var cores = ["rosa","verde","azul","amarelo","lima","blue","lara", "vermelho"]
     var igualimg = ["igual"]
@@ -27,7 +29,9 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        melhopont.text = pontos
+        continuar.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
+        if pontosarray.count > 0{
+            melhopont.text = String(pontosarray.max()!) + " pontos"}
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         quadroTutorial.delegate = self
         quadroTutorial.dataSource = self
@@ -94,12 +98,35 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         return cell}
     
 
-override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-    let enviarnome = segue.destination as! Jogo1ViewController
-    let enviaravatar = segue.destination as! Jogo1ViewController
-    enviaravatar.avatar = avatar
-    enviarnome.aluno = aluno
-}
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        let enviarnome = segue.destination as! Jogo1ViewController
+        
+        let enviaravatar = segue.destination as! Jogo1ViewController
+        
+        enviaravatar.avatar = avatar
+        
+        enviarnome.aluno = aluno
+        
+        if pontosarray.count > 0 {
+            
+            let enviarpontosarray = segue.destination as! Jogo1ViewController
+            
+            enviarpontosarray.pontosarray = pontosarray
+            
+            let enviaracertosarray = segue.destination as! Jogo1ViewController
+            
+            enviaracertosarray.acertosarray = acertosarray
+            
+            let enviarerrosarray = segue.destination as! Jogo1ViewController
+            
+            enviarerrosarray.errosarray = errosarray
+            
+        }
+        
+        
+        
+    }
 }
     extension MutableCollection {
         /// Shuffles the contents of this collection.

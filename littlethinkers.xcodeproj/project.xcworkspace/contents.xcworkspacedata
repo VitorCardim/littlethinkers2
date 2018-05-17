@@ -2,6 +2,15 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:littlethinkers.xcodeproj">
+      location = "group:/Users/Cardim/Documents/GitHub/littlethinkers2/littlethinkers/Comfortaa-Bold.ttf">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Cardim/Documents/GitHub/littlethinkers2/littlethinkers/Comfortaa-Light.ttf">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Cardim/Documents/GitHub/littlethinkers2/littlethinkers/Comfortaa-Regular.ttf">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -9,6 +9,9 @@
 import UIKit
 
 class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+    var pontosarray = Array<Int>()
+    var acertosarray = Array<Int>()
+    var errosarray = Array<Int>()
     var pontos = String()
     @IBOutlet weak var codigoacesso: UILabel!
     @IBOutlet weak var apagar: UIButton!
@@ -33,6 +36,10 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         apagar.isEnabled = false
         apagar.layer.cornerRadius = continuar.bounds.height / 2
+        continuar.layer.borderWidth = 1
+        apagar.layer.borderWidth = 1
+        continuar.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
+        apagar.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
         
         
     }
@@ -122,19 +129,35 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        let enviarnome = segue.destination as! TutorialViewController
-        let enviaravatar = segue.destination as! TutorialViewController
-        enviaravatar.avatar = avatar
-        enviarnome.aluno = aluno
-        if pontos != ""{
-            let enviarpontos = segue.destination as! TutorialViewController
-            enviarpontos.pontos = pontos
         
-    }
+        let enviarnome = segue.destination as! TutorialViewController
+        
+        let enviaravatar = segue.destination as! TutorialViewController
+        
+        enviaravatar.avatar = avatar
+        
+        enviarnome.aluno = aluno
+        
+        if pontosarray.count > 0 {
+            
+            let enviarpontosarray = segue.destination as! TutorialViewController
+            
+            enviarpontosarray.pontosarray = pontosarray
+            
+            let enviaracertosarray = segue.destination as! TutorialViewController
+            
+            enviaracertosarray.acertosarray = acertosarray
+            
+            let enviarerrosarray = segue.destination as! TutorialViewController
+            
+            enviarerrosarray.errosarray = errosarray
+            
+            
+            
+        }
+        
 }
 }
-
-
 
 
 

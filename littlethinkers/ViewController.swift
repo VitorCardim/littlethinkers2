@@ -69,12 +69,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func disableButton(_ button:UIButton) {
         button.isEnabled = false
-        button.alpha = 0.5
+        continuar.backgroundColor = #colorLiteral(red: 0.7508755326, green: 0.9684799314, blue: 0.774261415, alpha: 1)
+        continuar.setTitleColor(#colorLiteral(red: 0.5010768468, green: 0.6479894302, blue: 0.5168174807, alpha: 1), for: .normal)
+
     }
     
     func enableButton(_ button:UIButton) {
         button.isEnabled = true
-        button.alpha = 1.0
+        continuar.setTitleColor(UIColor.black, for: .normal)
+        continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+
     }
 }
 

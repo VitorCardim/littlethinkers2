@@ -9,46 +9,57 @@
 import UIKit
 
 class AcertosEErrosViewController: UIViewController {
+    @IBOutlet weak var tex: UIButton!
+    var pontosarray = Array<Int>()
+    var acertosarray = Array<Int>()
+    var errosarray = Array<Int>()
+    var arraypontosfirebase = Array<Int>()
+    
 
-    @IBAction func sairdoapp(_ sender: Any) {
-        func showMessageResetApp(){
-            let exitAppAlert = UIAlertController(title: "Obrigado por jogar",
-                                                 message: "Esperamos que joguem mais vezes e aprendam com isso",
-                                                 preferredStyle: .alert)
-            
-            let resetApp = UIAlertAction(title: "Close Now", style: .destructive) {
-                (alert) -> Void in
-                // home button pressed programmatically - to thorw app to background
-                UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
-                // terminaing app in background
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    exit(EXIT_SUCCESS)
-                })
-            }
-            
-            let laterAction = UIAlertAction(title: "Later", style: .cancel) {
-                (alert) -> Void in
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-            exitAppAlert.addAction(resetApp)
-            exitAppAlert.addAction(laterAction)
-            present(exitAppAlert, animated: true, completion: nil)
-        }}
+
+    @IBOutlet weak var sair: UIButton!
+    
     
     var acertosnumerico = Int()
     var errosnumerico = Int()
     var pontosnumerico = Int()
     
+
+    @IBOutlet weak var acertos: UILabel!
     @IBOutlet weak var pontos: UILabel!
     @IBOutlet weak var erros: UILabel!
-    @IBOutlet weak var acertos: UILabel!
     @IBOutlet weak var texto: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        tex.layer.cornerRadius = tex.bounds.height / 2
+        sair.layer.cornerRadius = sair.bounds.height / 2
+        sair.layer.borderWidth = 1
+        sair.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
+        for x in acertosarray{
+            
+            acertosnumerico = acertosnumerico + x}
+        
+        for x in errosarray {
+            
+            errosnumerico = errosnumerico + x}
+        
+        for x in pontosarray {
+            
+            pontosnumerico = pontosnumerico + x}
+        
+        acertos.text = String(acertosnumerico)
+        
+        erros.text = String(errosnumerico)
+        
+        pontos.text = String(pontosnumerico)
+        if  arraypontosfirebase.count > 0{
+           if  pontosnumerico > arraypontosfirebase.max()!{
+            texto.text = "Novo Recorde!"}
+           else{ texto.text = "Parabéns"}}
+    }
 
         // Do any additional setup after loading the view.
-    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

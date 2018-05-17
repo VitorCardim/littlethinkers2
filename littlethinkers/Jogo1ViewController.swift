@@ -11,8 +11,17 @@ import QuartzCore
 // 34 519 75 0
 class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var pontosarray = Array<Int>()
+    
+    var acertosarray = Array<Int>()
+    
+    var errosarray = Array<Int>()
+    
     var avatar = Int()
+    
     var aluno = String()
+    
+
     @IBOutlet weak var fimatividade: UIButton!
     @IBOutlet weak var voltarparatelasenha: UIButton!
     var tempoprofessora = Int()
@@ -45,6 +54,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tempoprofessora = 10
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
@@ -134,19 +144,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             if condicaoimages[1] == "e" && dificuldade == "1"{
                 if jogoimages[indexPath.row] == formacerta{
                     pontonumerico = pontonumerico + 1
-                    
-                    if pontonumerico == 20 {
+                    if pontonumerico > 20 {
+                        pontonumerico = 0
                         dificuldade = "2"
-                            self.pontonumerico = 0
                     }
-                    var altura = pontonumerico*((510)/20)
                     acertos = acertos + 1
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
+                    var altura = pontonumerico*((510)/20)
                     pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var certo = formacerta + "correct"
                     jogoimages.remove(at: posicao)
@@ -157,65 +160,53 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         segundos = 60}
                     tempo.text = String(segundos)
                     bonus = bonus + 1
-                    if bonus > 2{
-                        bonus = 2
+                    if bonus > 3{
+                        bonus = 3
                     }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        if self.dificuldade == "2"{
-                            let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
-                            let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
-                            let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
-                            self.condicaoimages = []
-                            self.condicaoimages.append(randomforma)
-                            self.condicaoimages.append(randomcondi)
-                            self.condicaoimages.append(randomcores)
-                            self.quadrocondicao.reloadData()
+                        let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
+                        let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
+                        var randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
+                        if self.dificuldade == "1"{
+                            randomcondi = "e"
                         }
-                        if self.verificador == true{
+                        self.condicaoimages = []
+                        self.condicaoimages.append(randomforma)
+                        self.condicaoimages.append(randomcondi)
+                        self.condicaoimages.append(randomcores)
+                        self.quadrocondicao.reloadData()
+                        formacerta = self.condicaoimages[0] + self.condicaoimages[2]
+                        while self.verificador == true{
                             self.jogoimages = []
-                            let formacertacontinuar = self.condicaoimages[0] + self.condicaoimages[2]
                             let formacorrandom = self.formacor.shuffled()
                             for x in formacorrandom[0..<28]{
                                 self.jogoimages.append(x)}
-                            while self.verificador == true{
-                                self.jogoimages = []
-                                for x in formacorrandom[0..<28]{
-                                    self.jogoimages.append(x)}
-                                for x in self.jogoimages{
-                                    if formacertacontinuar == x{
-                                        self.verificador = false
-                                        self.quadrojogo.reloadData()
-                                        break}
-                                }
-                            }
-                        }
+                            for x in self.jogoimages{
+                                if formacerta == x{
+                                    self.verificador = false
+                                    self.quadrojogo.reloadData()
+                                    break}}}
                     }
                 }
                 else{
                     pontonumerico = pontonumerico - 1
                     if pontonumerico < 0{
-                        pontonumerico = 0
-                    }
+                        pontonumerico = 0   }
                     erros = erros + 1
                     var altura = pontonumerico*((510)/20)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
                     pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
                     var errado = formaerrada + "cross"
                     jogoimages.remove(at: posicao)
                     jogoimages.insert(errado, at: posicao )
                     segundos = Int(tempo.text!)! - 1
-                    if segundos < 0{
+                    if segundos <= 0{
                         segundos = 0}
                     tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
                         self.jogoimages.remove(at: posicao)
+                        novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false {
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
                         self.jogoimages.insert(novacell, at: posicao)
@@ -226,142 +217,60 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
             
             if condicaoimages[1] == "ou" && dificuldade == "1"{
-                var condi1 = 0
-                var condi2 = 0
-                var condi3 = 0
-                var facilitador = String(jogoimages[indexPath.row])
-                if (facilitador == formacerta){
-                    condi1 = 1}
-                if facilitador.contains(condicaoimages[0]) {
-                    condi2 = 1 }
-                if facilitador.contains(condicaoimages[2]) {
-                    condi3 = 1 }
-                if (condi1 | condi2 | condi3) == 1{
-                    pontonumerico = pontonumerico + 1
-                    if pontonumerico == 20 {
-                        dificuldade = "2"
-                        self.pontonumerico = 0
-                    }
-                    var altura = pontonumerico*((510)/20)
-                    acertos = acertos + 1
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    formacerta = jogoimages[posicao]
-                    var certo = formacerta + "correct"
-                    jogoimages.remove(at: posicao)
-                    jogoimages.insert(certo, at: posicao)
-                    quadrojogo.reloadData()
-                    segundos = Int(tempo.text!)! + bonus
-                    if segundos > 60{
-                        segundos = 60}
-                    tempo.text = String(segundos)
-                    bonus = bonus + 1
-                    if bonus > 2{
-                        bonus = 2
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                        self.jogoimages.remove(at: posicao)
-                        if self.dificuldade == "2"{
+                    var condi1 = 0
+                    var condi2 = 0
+                    var condi3 = 0
+                    var facilitador = String(jogoimages[indexPath.row])
+                    if (facilitador == formacerta){
+                        condi1 = 1}
+                    if facilitador.contains(condicaoimages[0]) {
+                        condi2 = 1 }
+                    if facilitador.contains(condicaoimages[2]) {
+                        condi3 = 1 }
+                    if (condi1 | condi2 | condi3) == 1{
+                        let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
+                        let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
+                        let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
+                        condicaoimages = []
+                        condicaoimages.append(randomforma)
+                        condicaoimages.append(randomcondi)
+                        condicaoimages.append(randomcores)
+                        quadrocondicao.reloadData()
+                        pontonumerico = pontonumerico + 1
+                        if pontonumerico > 20 {
+                            pontonumerico = 0
+                            dificuldade = "2"}
+                        acertos = acertos + 1
+                        var altura = pontonumerico*((510)/20)
+                        pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                        formacerta = jogoimages[posicao]
+                        var certo = formacerta + "correct"
+                        jogoimages.remove(at: posicao)
+                        jogoimages.insert(certo, at: posicao)
+                        quadrojogo.reloadData()
+                        segundos = Int(tempo.text!)! + bonus
+                        if segundos > 60{
+                            segundos = 60
+                        }
+                        bonus = bonus + 1
+                        if bonus > 3{
+                            bonus = 3
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                            self.jogoimages.remove(at: posicao)
                             let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                             let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
-                            let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
+                            var randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
+                            if self.dificuldade == "1"{
+                                randomcondi = "ou"
+                            }
                             self.condicaoimages = []
                             self.condicaoimages.append(randomforma)
                             self.condicaoimages.append(randomcondi)
                             self.condicaoimages.append(randomcores)
                             self.quadrocondicao.reloadData()
-                            self.jogoimages = []
-                            let formacertacontinuar = self.condicaoimages[0] + self.condicaoimages[2]
-                            let formacorrandom = self.formacor.shuffled()
-                            for x in formacorrandom[0..<28]{
-                                self.jogoimages.append(x)}
-                            if self.verificador == true{
-                                while self.verificador == true{
-                                    self.jogoimages = []
-                                    for x in formacorrandom[0..<28]{
-                                        self.jogoimages.append(x)}
-                                    for x in self.jogoimages{
-                                        if formacertacontinuar == x{
-                                            self.verificador = false
-                                            self.quadrojogo.reloadData()
-                                            break}
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            while self.garantir(cell: novacell, ary: self.jogoimages) == false {
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)
-                        self.verificador = true
-                        for x in self.jogoimages{
-                            if  x.contains(self.self.condicaoimages[0]){
-                                self.self.verificador = false}
-                            if  x.contains(self.condicaoimages[2]){
-                                self.verificador = false}
-                            }
-                        if self.self.verificador == true{
+                            formacerta = self.condicaoimages[0] + self.condicaoimages[2]
                             while self.verificador == true{
-                                self.jogoimages = []
-                                let formacorrandom = self.formacor.shuffled()
-                                for x in formacorrandom[0..<28]{
-                                    self.jogoimages.append(x)}
-                                for x in self.jogoimages{
-                                if formacerta == x{
-                                    self.verificador = false
-                                        break}
-                            }
-                        }
-                        }
-                        self.quadrojogo.reloadData()
-                    }
-                }
-                }
-                    
-
-                else{
-                    pontonumerico = pontonumerico - 1
-                    if pontonumerico < 0{
-                        pontonumerico = 0
-                    }
-                    erros = erros + 1
-                    var altura = pontonumerico*((510)/20)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    formaerrada = jogoimages[posicao]
-                    var errado = formaerrada + "cross"
-                    jogoimages.remove(at: posicao )
-                    jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! - 1
-                    if segundos < 0{
-                        segundos = 0}
-                    tempo.text = String(segundos)
-                    bonus = 1
-                    quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                        self.jogoimages.remove(at: posicao )
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false{
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao )
-                        self.verificador = true
-                        for x in self.jogoimages{
-                            if  x.contains(self.condicaoimages[0]){
-                                self.self.verificador = false}
-                            if  x.contains(self.condicaoimages[2]){
-                                self.verificador = false}
-                        }
-                        if self.self.verificador == true{
-                            while self.self.verificador == true{
                                 self.jogoimages = []
                                 let formacorrandom = self.formacor.shuffled()
                                 for x in formacorrandom[0..<28]{
@@ -369,241 +278,40 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                 for x in self.jogoimages{
                                     if formacerta == x{
                                         self.verificador = false
-                                        break}
-                            }}
-                        }
-                        self.quadrojogo.reloadData()}
-        }
-}
-            if condicaoimages[1] == "e" && dificuldade == "2"{
-                if jogoimages[indexPath.row] == formacerta{
-                    pontonumerico = pontonumerico + 1
-                    if pontonumerico > 100 {
-                        pontonumerico = 100
-                    }
-                    acertos = acertos + 1
-                    var altura = pontonumerico*((510)/100)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    var certo = formacerta + "correct"
-                    jogoimages.remove(at: posicao)
-                    jogoimages.insert(certo, at: posicao)
-                    quadrojogo.reloadData()
-                    segundos = Int(tempo.text!)! + bonus
-                    if segundos > 60{
-                        segundos = 60}
-                    tempo.text = String(segundos)
-                    bonus = bonus + 1
-                    if bonus > 3{
-                        bonus = 3
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
-                        let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
-                        let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
-                        self.condicaoimages = []
-                        self.condicaoimages.append(randomforma)
-                        self.condicaoimages.append(randomcondi)
-                        self.condicaoimages.append(randomcores)
-                        self.quadrocondicao.reloadData()
-                        var formacertadif2 = self.condicaoimages[0] + self.condicaoimages[2]
-                        
-
-                        if self.verificador == true{
-                            while self.verificador == true{
-                                self.jogoimages = []
-                                let formacorrandom = self.formacor.shuffled()
-                                for x in formacorrandom[0..<28]{
-                                    self.jogoimages.append(x)}
-                                for x in self.jogoimages{
-                                    if formacertadif2 == x{
-                                        self.verificador = false
                                         self.quadrojogo.reloadData()
-                                        break}
-                                }
-                            }
-                        }
-                    }
-                }
-                else{
-                    pontonumerico = pontonumerico - 1
-                    if pontonumerico < 0{
-                        pontonumerico = 0
-                    }
-                    erros = erros + 1
-                    var altura = pontonumerico*((510)/100)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    var errado = formaerrada + "cross"
-                    jogoimages.remove(at: posicao)
-                    jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! - 1
-                    if segundos < 0{
-                        segundos = 0}
-                    tempo.text = String(segundos)
-                    bonus = 1
-                    quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                        self.jogoimages.remove(at: posicao)
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)
+                                        break}}}}
                         self.quadrojogo.reloadData()
                     }
-                    
-                }
-            }
-            
-            if condicaoimages[1] == "ou" && dificuldade == "2"{
-                var condi1 = 0
-                var condi2 = 0
-                var condi3 = 0
-                var facilitador = String(jogoimages[indexPath.row])
-                if (facilitador == formacerta){
-                    condi1 = 1}
-                if facilitador.contains(condicaoimages[0]) {
-                    condi2 = 1 }
-                if facilitador.contains(condicaoimages[2]) {
-                    condi3 = 1 }
-                if (condi1 | condi2 | condi3) == 1{
-                    let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
-                    let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
-                    let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
-                    condicaoimages = []
-                    condicaoimages.append(randomforma)
-                    condicaoimages.append(randomcondi)
-                    condicaoimages.append(randomcores)
-                    quadrocondicao.reloadData()
-                    pontonumerico = pontonumerico + 1
-                    if pontonumerico > 100 {
-                        pontonumerico = 100
-                    }
-                    acertos = acertos + 1
-                    var altura = pontonumerico*((510)/100)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    formacerta = jogoimages[posicao]
-                    var certo = formacerta + "correct"
-                    jogoimages.remove(at: posicao)
-                    jogoimages.insert(certo, at: posicao)
-                    quadrojogo.reloadData()
-                    segundos = Int(tempo.text!)! + bonus
-                    if segundos > 60{
-                        segundos = 60
-                    }
-                    bonus = bonus + 1
-                    if bonus > 3{
-                        bonus = 3
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                        self.jogoimages.remove(at: posicao)
-                        let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
-                        let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
-                        let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
-                        self.condicaoimages = []
-                        self.condicaoimages.append(randomforma)
-                        self.condicaoimages.append(randomcondi)
-                        self.condicaoimages.append(randomcores)
-                        self.quadrocondicao.reloadData()
-                        if self.condicaoimages[1] == "e"{
-                            var formacerta2 = self.condicaoimages[0] + self.condicaoimages[2]
-                            if self.verificador == true{
-                                while self.verificador == true{
-                                    self.jogoimages = []
-                                    let formacorrandom = self.formacor.shuffled()
-                                    for x in formacorrandom[0..<28]{
-                                        self.jogoimages.append(x)}
-                                    for x in self.jogoimages{
-                                        if formacerta2 == x{
-                                            self.verificador = false
-                                            self.quadrojogo.reloadData()
-                                            break}
-                                    }
-                                }
+                    else{
+                        pontonumerico = pontonumerico - 1
+                        if pontonumerico < 0{
+                            pontonumerico = 0
+                        }
+                        erros = erros + 1
+                        var altura = pontonumerico*((510)/20)
+                        pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                        formaerrada = jogoimages[posicao]
+                        var errado = formaerrada + "cross"
+                        jogoimages.remove(at: posicao )
+                        jogoimages.insert(errado, at: posicao )
+                        segundos = Int(tempo.text!)! - 1
+                        if segundos <= 0{
+                            segundos = 0}
+                        tempo.text = String(segundos)
+                        bonus = 1
+                        quadrojogo.reloadData()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                            self.jogoimages.remove(at: posicao )
+                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
+                            while self.garantir(cell: novacell, ary: self.jogoimages) == false{
+                                novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
+                            self.jogoimages.insert(novacell, at: posicao )
+                            for x in self.jogoimages{
+                                if  x.contains(self.condicaoimages[0]){
+                                    self.self.verificador = false}
+                                if  x.contains(self.condicaoimages[2]){
+                                    self.verificador = false}
                             }
-                        }
-                        else{
-                        var formacertadif2 = self.condicaoimages[0] + self.condicaoimages[2]
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false {
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao)
-                        self.verificador = true
-                        for x in self.jogoimages{
-                            if  x.contains(self.self.condicaoimages[0]){
-                                self.self.verificador = false}
-                            if  x.contains(self.condicaoimages[2]){
-                                self.verificador = false}
-                        }
-                        if self.self.verificador == true{
-                            while self.verificador == true{
-                                self.jogoimages = []
-                                let formacorrandom = self.formacor.shuffled()
-                                for x in formacorrandom[0..<28]{
-                                    self.jogoimages.append(x)}
-                                for x in self.jogoimages{
-                                    if formacertadif2 == x{
-                                        self.verificador = false
-                                        break}
-                                }
-                            }
-                        }
-                        self.quadrojogo.reloadData()
-                    }
-                    
-                }
-                }
-                else{
-                    pontonumerico = pontonumerico - 1
-                    if pontonumerico < 0{
-                        pontonumerico = 0
-                    }
-                    erros = erros + 1
-                    var altura = pontonumerico*((510)/100)
-                    if altura > 510{
-                        altura = 510
-                    }
-                    if altura < 0{
-                        altura = 0
-                    }
-                    pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
-                    formaerrada = jogoimages[posicao]
-                    var errado = formaerrada + "cross"
-                    jogoimages.remove(at: posicao )
-                    jogoimages.insert(errado, at: posicao )
-                    segundos = Int(tempo.text!)! - 1
-                    if segundos < 0{
-                        segundos = 0}
-                    tempo.text = String(segundos)
-                    bonus = 1
-                    quadrojogo.reloadData()
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
-                        self.jogoimages.remove(at: posicao )
-                        while self.garantir(cell: novacell, ary: self.jogoimages) == false{
-                            novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
-                        self.jogoimages.insert(novacell, at: posicao )
-                        self.verificador = true
-                        for x in self.jogoimages{
-                            if  x.contains(self.condicaoimages[0]){
-                                self.self.verificador = false}
-                            if  x.contains(self.condicaoimages[2]){
-                                self.verificador = false}
-                        }
-                        if self.self.verificador == true{
                             while self.self.verificador == true{
                                 self.jogoimages = []
                                 let formacorrandom = self.formacor.shuffled()
@@ -614,34 +322,238 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                         self.verificador = false
                                         break}
                                 }}
+                            self.quadrojogo.reloadData()}}}
+
+                if condicaoimages[1] == "e" && dificuldade == "2"{
+                    if jogoimages[indexPath.row] == formacerta{
+                        pontonumerico = pontonumerico + 1
+                        if pontonumerico > 300 {
+                            pontonumerico = 300
                         }
-                        self.quadrojogo.reloadData()}
-                }
-            }
-        }
-    }
-            
+                        acertos = acertos + 1
+                        var altura = pontonumerico*((510)/200)
+                        pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                        var certo = formacerta + "correct"
+                        jogoimages.remove(at: posicao)
+                        jogoimages.insert(certo, at: posicao)
+                        quadrojogo.reloadData()
+                        segundos = Int(tempo.text!)! + bonus
+                        if segundos > 60{
+                            segundos = 60}
+                        tempo.text = String(segundos)
+                        bonus = bonus + 1
+                        if bonus > 3{
+                            bonus = 3
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
+                            let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
+                            let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
+                            self.condicaoimages = []
+                            self.condicaoimages.append(randomforma)
+                            self.condicaoimages.append(randomcondi)
+                            self.condicaoimages.append(randomcores)
+                            self.quadrocondicao.reloadData()
+                            formacerta = self.condicaoimages[0] + self.condicaoimages[2]
+                            while self.verificador == true{
+                                self.jogoimages = []
+                                let formacorrandom = self.formacor.shuffled()
+                                for x in formacorrandom[0..<28]{
+                                    self.jogoimages.append(x)}
+                                for x in self.jogoimages{
+                                    if formacerta == x{
+                                        self.verificador = false
+                                        self.quadrojogo.reloadData()
+                                        break}}}
+                        }
+                    }
+                        else{
+                            pontonumerico = pontonumerico - 1
+                            if pontonumerico < 0{
+                                pontonumerico = 0   }
+                            erros = erros + 1
+                            var altura = pontonumerico*((510)/200)
+                            pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                            var errado = formaerrada + "cross"
+                            jogoimages.remove(at: posicao)
+                            jogoimages.insert(errado, at: posicao )
+                            segundos = Int(tempo.text!)! - 1
+                            if segundos <= 0{
+                                segundos = 0}
+                            tempo.text = String(segundos)
+                            bonus = 1
+                            quadrojogo.reloadData()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                                self.jogoimages.remove(at: posicao)
+                                novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
+                                while self.garantir(cell: novacell, ary: self.jogoimages) == false {
+                                    novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
+                                self.jogoimages.insert(novacell, at: posicao)
+                                self.quadrojogo.reloadData()
+                            }
+                            
+                        }
+                    }
+                    
+                    if condicaoimages[1] == "ou" && dificuldade == "2"{
+                        var condi1 = 0
+                        var condi2 = 0
+                        var condi3 = 0
+                        var facilitador = String(jogoimages[indexPath.row])
+                        if (facilitador == formacerta){
+                            condi1 = 1}
+                        if facilitador.contains(condicaoimages[0]) {
+                            condi2 = 1 }
+                        if facilitador.contains(condicaoimages[2]) {
+                            condi3 = 1 }
+                        if (condi1 | condi2 | condi3) == 1{
+                            let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
+                            let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
+                            let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
+                            condicaoimages = []
+                            condicaoimages.append(randomforma)
+                            condicaoimages.append(randomcondi)
+                            condicaoimages.append(randomcores)
+                            quadrocondicao.reloadData()
+                            pontonumerico = pontonumerico + 1
+                            if pontonumerico > 300 {
+                                pontonumerico = 300
+                            }
+                            acertos = acertos + 1
+                            var altura = pontonumerico*((510)/200)
+                            pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                            formacerta = jogoimages[posicao]
+                            var certo = formacerta + "correct"
+                            jogoimages.remove(at: posicao)
+                            jogoimages.insert(certo, at: posicao)
+                            quadrojogo.reloadData()
+                            segundos = Int(tempo.text!)! + bonus
+                            if segundos > 60{
+                                segundos = 60
+                            }
+                            bonus = bonus + 1
+                            if bonus > 3{
+                                bonus = 3
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                self.jogoimages.remove(at: posicao)
+                                let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
+                                let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
+                                let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
+                                self.condicaoimages = []
+                                self.condicaoimages.append(randomforma)
+                                self.condicaoimages.append(randomcondi)
+                                self.condicaoimages.append(randomcores)
+                                self.quadrocondicao.reloadData()
+                                formacerta = self.condicaoimages[0] + self.condicaoimages[2]
+                                while self.verificador == true{
+                                    self.jogoimages = []
+                                    let formacorrandom = self.formacor.shuffled()
+                                    for x in formacorrandom[0..<28]{
+                                        self.jogoimages.append(x)}
+                                    for x in self.jogoimages{
+                                        if formacerta == x{
+                                            self.verificador = false
+                                            self.quadrojogo.reloadData()
+                                            break}}}}
+                            self.quadrojogo.reloadData()
+                        }
+                            else{
+                                pontonumerico = pontonumerico - 1
+                                if pontonumerico < 0{
+                                    pontonumerico = 0
+                                }
+                                erros = erros + 1
+                                var altura = pontonumerico*((510)/200)
+                                pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
+                                formaerrada = jogoimages[posicao]
+                                var errado = formaerrada + "cross"
+                                jogoimages.remove(at: posicao )
+                                jogoimages.insert(errado, at: posicao )
+                                segundos = Int(tempo.text!)! - 1
+                                if segundos <= 0{
+                                    segundos = 0}
+                                tempo.text = String(segundos)
+                                bonus = 1
+                                quadrojogo.reloadData()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                                    self.jogoimages.remove(at: posicao )
+                                    novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
+                                    while self.garantir(cell: novacell, ary: self.jogoimages) == false{
+                                        novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]}
+                                    self.jogoimages.insert(novacell, at: posicao )
+                                    for x in self.jogoimages{
+                                        if  x.contains(self.condicaoimages[0]){
+                                            self.self.verificador = false}
+                                        if  x.contains(self.condicaoimages[2]){
+                                            self.verificador = false}
+                                    }
+                                    while self.self.verificador == true{
+                                        self.jogoimages = []
+                                        let formacorrandom = self.formacor.shuffled()
+                                        for x in formacorrandom[0..<28]{
+                                            self.jogoimages.append(x)}
+                                        for x in self.jogoimages{
+                                            if formacerta == x{
+                                                self.verificador = false
+                                                break}
+                                        }}
+                                    self.quadrojogo.reloadData()}}}}}
 
 
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
         var pontos = (acertos - erros)*10
+        
         if pontos < 0 {
+            
             pontos = 0
+            
         }
-        var pontosmelhor = String(pontos) + " pontos"
-        let enviarpontos = segue.destination as! SenhaViewController
-        enviarpontos.pontos = pontosmelhor
-    }
+        
+        acertosarray.append(acertos)
+        errosarray.append(erros)
+        pontosarray.append(pontos)
+        if tempoprofessora != 0{
+        let enviarpontosarray = segue.destination as! SenhaViewController
+        enviarpontosarray.pontosarray = pontosarray
+        let enviaracertosarray = segue.destination as! SenhaViewController
+        enviaracertosarray.acertosarray = acertosarray
+        let enviarerrosarray = segue.destination as! SenhaViewController
+        enviarerrosarray.errosarray = errosarray}
+        else{
+        if acertos >= 100{
+            let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviarpontosarray1.pontosarray = pontosarray
+            let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviaracertosarray1.acertosarray = acertosarray
+            let enviarerrosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviarerrosarray1.errosarray = errosarray}
+        
+        }}
+    
     @objc func iniciodojogo(){
+        
         segundos -= 1
+        
         tempo.text = String(segundos)
-        //if tempoprofessora == 0{
-         //   self .performSegue(withIdentifier: "fim", sender: self)
-        //}
-        if segundos == 0{
-            timernumero.invalidate()
-            self .performSegue(withIdentifier: "voltarsenha", sender: self)
+        
+        if acertos >= 100 {
+            tempoprofessora = 0
+            self .performSegue(withIdentifier: "fim", sender: self)
+            
         }
+        
+        
+        
+        if segundos <= 0{
+            
+            timernumero.invalidate()
+            
+            self .performSegue(withIdentifier: "voltarsenha", sender: self)
+            
+        }
+        
     }
     
     func garantir(cell:String, ary:Array<String>)-> Bool{

@@ -24,6 +24,8 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         continuar.isEnabled = false
         continuar.layer.cornerRadius = continuar.bounds.height / 2
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        continuar.layer.borderWidth = 1
+        continuar.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
 
     }
     
@@ -49,9 +51,11 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         let cell = collectionView.cellForItem(at: indexPath)
         cell?.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
         cell?.layer.borderWidth = 0
+        cell?.layer.cornerRadius = (cell?.bounds.height)! / 2
         continuar.isEnabled = true
         continuar.setTitleColor(UIColor.black, for: .normal)
         continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
+        
         numeroAvatar = images.index(of: images[indexPath.row])!
 
         
