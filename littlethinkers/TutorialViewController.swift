@@ -45,7 +45,10 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
             var i = 0
             while imageTu.count != 15 && i != 3{
                 imageTu.append(randomforma[i])
-                imageTu.append(randomcondi[i])
+                if i > 1{
+                    imageTu.append(condicoes[1])
+                }else{imageTu.append(condicoes[i])}
+                
                 imageTu.append(randomcores[i])
                 imageTu.append(igualimg[0])
                 if (randomcondi[i] == "e"){

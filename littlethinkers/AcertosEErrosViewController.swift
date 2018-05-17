@@ -35,6 +35,7 @@ class AcertosEErrosViewController: UIViewController {
         sair.layer.cornerRadius = sair.bounds.height / 2
         sair.layer.borderWidth = 1
         sair.layer.borderColor = #colorLiteral(red: 0.1188444101, green: 0.5952072539, blue: 0.2881412315, alpha: 1)
+        texto.text = "Parabéns"
         for x in acertosarray{
             
             acertosnumerico = acertosnumerico + x}
@@ -54,9 +55,7 @@ class AcertosEErrosViewController: UIViewController {
         pontos.text = String(pontosnumerico)
         if  arraypontosfirebase.count > 0{
            if  pontosnumerico > arraypontosfirebase.max()!{
-            texto.text = "Novo Recorde!"}
-           else{ texto.text = "Parabéns"}}
-    }
+            texto.text = "Novo Recorde!"}}}
 
         // Do any additional setup after loading the view.
 

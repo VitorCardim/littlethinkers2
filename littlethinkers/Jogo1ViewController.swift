@@ -515,7 +515,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         let enviarerrosarray = segue.destination as! SenhaViewController
         enviarerrosarray.errosarray = errosarray}
         else{
-        if acertos >= 100{
+        if tempoprofessora == 0{
             let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
             enviarpontosarray1.pontosarray = pontosarray
             let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
@@ -531,7 +531,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         tempo.text = String(segundos)
         
-        if acertos >= 100 {
+        if acertos > 100 {
             tempoprofessora = 0
             self .performSegue(withIdentifier: "fim", sender: self)
             
