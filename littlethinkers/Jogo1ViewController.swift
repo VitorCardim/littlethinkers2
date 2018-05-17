@@ -72,7 +72,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         self.view.addSubview(tempo)
         let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
         let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
-        let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
+        let randomcondi = "ou"
         condicaoimages.append(randomforma)
         condicaoimages.append(randomcondi)
         condicaoimages.append(randomcores)
@@ -141,12 +141,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             let posicao  = jogoimages.index(of: jogoimages[indexPath.row])!
             var formaerrada = jogoimages[indexPath.row]
             verificador = true
-            if condicaoimages[1] == "e" && dificuldade == "1"{
+            if dificuldade == "2"{
                 if jogoimages[indexPath.row] == formacerta{
                     pontonumerico = pontonumerico + 1
                     if pontonumerico > 20 {
                         pontonumerico = 0
-                        dificuldade = "2"
+                        dificuldade = "3"
                     }
                     acertos = acertos + 1
                     var altura = pontonumerico*((510)/20)
@@ -167,7 +167,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                         let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
                         var randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
-                        if self.dificuldade == "1"{
+                        if self.dificuldade == "2"{
                             randomcondi = "e"
                         }
                         self.condicaoimages = []
@@ -216,7 +216,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                 }
             }
             
-            if condicaoimages[1] == "ou" && dificuldade == "1"{
+            if dificuldade == "1"{
                     var condi1 = 0
                     var condi2 = 0
                     var condi3 = 0
@@ -228,18 +228,16 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if facilitador.contains(condicaoimages[2]) {
                         condi3 = 1 }
                     if (condi1 | condi2 | condi3) == 1{
-                        let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
-                        let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
-                        let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
-                        condicaoimages = []
-                        condicaoimages.append(randomforma)
-                        condicaoimages.append(randomcondi)
-                        condicaoimages.append(randomcores)
-                        quadrocondicao.reloadData()
                         pontonumerico = pontonumerico + 1
                         if pontonumerico > 20 {
                             pontonumerico = 0
-                            dificuldade = "2"}
+                            self.dificuldade = "2" }
+                        let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
+                        let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
+                        var randomcondi = "e"
+                        if dificuldade == "1"{
+                            randomcondi = "ou"
+                        }
                         acertos = acertos + 1
                         var altura = pontonumerico*((510)/20)
                         pontos.frame = CGRect(x: 11, y: 649, width: 43, height: Int(-altura))
@@ -260,9 +258,9 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             self.jogoimages.remove(at: posicao)
                             let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                             let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
-                            var randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
-                            if self.dificuldade == "1"{
-                                randomcondi = "ou"
+                            var randomcondi = "ou"
+                            if self.dificuldade == "2"{
+                                randomcondi = "e"
                             }
                             self.condicaoimages = []
                             self.condicaoimages.append(randomforma)
@@ -324,7 +322,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                 }}
                             self.quadrojogo.reloadData()}}}
 
-                if condicaoimages[1] == "e" && dificuldade == "2"{
+                if condicaoimages[1] == "e" && dificuldade == "3"{
                     if jogoimages[indexPath.row] == formacerta{
                         pontonumerico = pontonumerico + 1
                         if pontonumerico > 300 {
@@ -395,7 +393,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         }
                     }
                     
-                    if condicaoimages[1] == "ou" && dificuldade == "2"{
+                    if condicaoimages[1] == "ou" && dificuldade == "3"{
                         var condi1 = 0
                         var condi2 = 0
                         var condi3 = 0
@@ -410,11 +408,6 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             let randomforma = formas[Int(arc4random_uniform(UInt32(formas.count)))]
                             let randomcores = cores[Int(arc4random_uniform(UInt32(cores.count)))]
                             let randomcondi = condicoes[Int(arc4random_uniform(UInt32(condicoes.count)))]
-                            condicaoimages = []
-                            condicaoimages.append(randomforma)
-                            condicaoimages.append(randomcondi)
-                            condicaoimages.append(randomcores)
-                            quadrocondicao.reloadData()
                             pontonumerico = pontonumerico + 1
                             if pontonumerico > 300 {
                                 pontonumerico = 300
