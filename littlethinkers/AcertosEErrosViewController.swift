@@ -20,7 +20,6 @@ class AcertosEErrosViewController: UIViewController {
 
     @IBOutlet weak var sair: UIButton!
     
-    
     var acertosnumerico = Int()
     var errosnumerico = Int()
     var pontosnumerico = Int()

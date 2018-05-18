@@ -112,6 +112,7 @@ class TutorialViewController: UIViewController, UICollectionViewDelegate, UIColl
         enviaravatar.avatar = avatar
         
         enviarnome.aluno = aluno
+        print("Passando para a tela de jogo o nome \(aluno)")
         
         if pontosarray.count > 0 {
             

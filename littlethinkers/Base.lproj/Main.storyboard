@@ -620,6 +620,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="sair:" destination="bcZ-98-OWJ" eventType="touchUpInside" id="JEU-7c-Wvo"/>
                                     <action selector="sairdoapp:" destination="bcZ-98-OWJ" eventType="touchUpInside" id="kgi-WQ-PSD"/>
                                 </connections>
                             </button>
@@ -723,6 +724,7 @@
         <image name="default-opaco" width="750" height="1334"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Y6q-aJ-IZY"/>
         <segue reference="dZK-37-V4p"/>
     </inferredMetricsTieBreakers>
 </document>

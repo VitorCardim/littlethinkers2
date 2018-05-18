@@ -41,7 +41,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     @IBOutlet weak var gridponto: UILabel!
     @IBOutlet weak var quadrojogo: UICollectionView!
     @IBOutlet weak var quadrocondicao: UICollectionView!
-    var dificuldade = "1"
+    var dificuldade = "3"
     var condicaoimages = [String]()
     var jogoimages = [String]()
     //Possibilidades e Arrays bases
@@ -566,6 +566,8 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         errosarray.append(erros)
         pontosarray.append(pontos)
         if tempoprofessora != 0{
+        let enviarnome = segue.destination as! TutorialViewController
+        enviarnome.aluno = aluno
         let enviarpontosarray = segue.destination as! SenhaViewController
         enviarpontosarray.pontosarray = pontosarray
         let enviaracertosarray = segue.destination as! SenhaViewController
