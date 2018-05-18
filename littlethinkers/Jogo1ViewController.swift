@@ -68,11 +68,15 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
         })
         
-        0
+
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
         quadrojogo.dataSource = self
+        quadrojogo.layer.borderWidth = 1
+        quadrocondicao.layer.borderWidth = 1
+        quadrojogo.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+        quadrocondicao.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
         gridponto.layer.borderColor = UIColor.red.cgColor
         gridponto.layer.borderWidth = 1.0
         tempo.frame = CGRect(x: 10, y: 140, width: 45, height: 45)
@@ -90,6 +94,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         condicaoimages.append(randomforma)
         condicaoimages.append(randomcondi)
         condicaoimages.append(randomcores)
+        
         
         let formacorrandom = formacor.shuffled()
         
@@ -114,6 +119,8 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         verificador0 = false
                         break}
                 }}}
+        
+        
         
     }
 
@@ -177,6 +184,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if bonus > 3{
                         bonus = 3
                     }
+
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                         let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
@@ -268,7 +276,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         if bonus > 3{
                             bonus = 3
                         }
+                        quadrocondicao.layer.borderWidth = 5
+                        quadrocondicao.layer.borderColor = UIColor.white.cgColor
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                            self.quadrocondicao.layer.borderWidth = 1
+                            self.quadrocondicao.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
                             self.jogoimages.remove(at: posicao)
                             let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                             let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
@@ -291,8 +303,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                     if formacerta == x{
                                         self.verificador = false
                                         self.quadrojogo.reloadData()
-                                        break}}}}
+                                        break}}}
+                        }
                         self.quadrojogo.reloadData()
+                        
                     }
                     else{
                         pontonumerico = pontonumerico - 1
@@ -529,13 +543,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         let enviarerrosarray = segue.destination as! SenhaViewController
         enviarerrosarray.errosarray = errosarray}
         else{
-        if tempoprofessora == 0{
-            let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-            enviarpontosarray1.pontosarray = pontosarray
-            let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-            enviaracertosarray1.acertosarray = acertosarray
-            let enviarerrosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-            enviarerrosarray1.errosarray = errosarray}
+//        if tempoprofessora == 0{
+//            let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+//            enviarpontosarray1.pontosarray = pontosarray
+//            let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+//            enviaracertosarray1.acertosarray = acertosarray
+//            let enviarerrosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+//            enviarerrosarray1.errosarray = errosarray}
         
         }}
     
@@ -548,7 +562,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         if nowtimestamp >= tempolimite {
             tempoprofessora = 0
             
-            self .performSegue(withIdentifier: "fim", sender: self)
+        //    self .performSegue(withIdentifier: "fim", sender: self)
             
         }
         

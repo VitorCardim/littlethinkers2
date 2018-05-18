@@ -29,8 +29,10 @@
 		5FF17F2D20A1CC0A00B74FCE /* AvaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F2C20A1CC0A00B74FCE /* AvaViewController.swift */; };
 		5FF17F3720A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF17F3620A1E12800B74FCE /* AvatarChoiceCollectionViewCell.swift */; };
 		A737052320AE349200C20BBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A737052220AE349100C20BBA /* GoogleService-Info.plist */; };
-		A737052520AE3D2B00C20BBA /* Fontes in Resources */ = {isa = PBXBuildFile; fileRef = A737052420AE3D2B00C20BBA /* Fontes */; };
 		A737052720AE465E00C20BBA /* participação.png in Resources */ = {isa = PBXBuildFile; fileRef = A737052620AE465E00C20BBA /* participação.png */; };
+		A76A6BDD20AEF670007B094D /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76A6BDB20AEF59C007B094D /* Comfortaa-Bold.ttf */; };
+		A76A6BDE20AEF674007B094D /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76A6BDC20AEF59C007B094D /* Comfortaa-Light.ttf */; };
+		A76A6BDF20AEF67F007B094D /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A76A6BDA20AEF59C007B094D /* Comfortaa-Regular.ttf */; };
 		B88C3E6B821E846C3B277722 /* Pods_littlethinkersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D474BC339BD5B4320A79A2A8 /* Pods_littlethinkersTests.framework */; };
 		CB345B6013E4CCF17BB6AD52 /* Pods_littlethinkersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E256822A37A21964F42E7D6 /* Pods_littlethinkersUITests.framework */; };
 /* End PBXBuildFile section */
@@ -87,8 +89,10 @@
 		684ABDC7F9B3EE6E67722F1B /* Pods-littlethinkersUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littlethinkersUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-littlethinkersUITests/Pods-littlethinkersUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A65DA649F9CD9761CEA20ECA /* Pods-littlethinkersUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littlethinkersUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littlethinkersUITests/Pods-littlethinkersUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A737052220AE349100C20BBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		A737052420AE3D2B00C20BBA /* Fontes */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fontes; path = ../../../../Downloads/Fontes; sourceTree = "<group>"; };
 		A737052620AE465E00C20BBA /* participação.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "participação.png"; path = "../../../../Downloads/participação.png"; sourceTree = "<group>"; };
+		A76A6BDA20AEF59C007B094D /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		A76A6BDB20AEF59C007B094D /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		A76A6BDC20AEF59C007B094D /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../../../Downloads/Fontes/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		BA9880CCBEAB02E65DD1F62A /* Pods-littlethinkers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littlethinkers.release.xcconfig"; path = "Pods/Target Support Files/Pods-littlethinkers/Pods-littlethinkers.release.xcconfig"; sourceTree = "<group>"; };
 		D474BC339BD5B4320A79A2A8 /* Pods_littlethinkersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_littlethinkersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F999C15D303F448757365993 /* Pods-littlethinkersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-littlethinkersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-littlethinkersTests/Pods-littlethinkersTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -177,8 +181,10 @@
 				5FEFA86C20AB820800CC0F1E /* AcertosEErrosViewController.swift */,
 				5F00552820A09D580002BEBE /* Main.storyboard */,
 				5F00552E20A09D5A0002BEBE /* Assets.xcassets */,
+				A76A6BDB20AEF59C007B094D /* Comfortaa-Bold.ttf */,
+				A76A6BDC20AEF59C007B094D /* Comfortaa-Light.ttf */,
+				A76A6BDA20AEF59C007B094D /* Comfortaa-Regular.ttf */,
 				5F00553020A09D5A0002BEBE /* LaunchScreen.storyboard */,
-				A737052420AE3D2B00C20BBA /* Fontes */,
 				5F00553320A09D5A0002BEBE /* Info.plist */,
 				5FB619E720AE2E70007C9D18 /* participação.png */,
 				A737052620AE465E00C20BBA /* participação.png */,
@@ -323,10 +329,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A737052520AE3D2B00C20BBA /* Fontes in Resources */,
 				5F00553220A09D5A0002BEBE /* LaunchScreen.storyboard in Resources */,
 				A737052320AE349200C20BBA /* GoogleService-Info.plist in Resources */,
+				A76A6BDD20AEF670007B094D /* Comfortaa-Bold.ttf in Resources */,
 				A737052720AE465E00C20BBA /* participação.png in Resources */,
+				A76A6BDF20AEF67F007B094D /* Comfortaa-Regular.ttf in Resources */,
+				A76A6BDE20AEF674007B094D /* Comfortaa-Light.ttf in Resources */,
 				5F00552F20A09D5A0002BEBE /* Assets.xcassets in Resources */,
 				5F00552A20A09D580002BEBE /* Main.storyboard in Resources */,
 			);

@@ -102,7 +102,6 @@ class SenhaViewController: UIViewController, UICollectionViewDelegate, UICollect
             if imageSenha.count != 3 {
                 imageSenha.append(imageTeclado[indexPath.row])
                 senha.append(imageTeclado.index(of: imageTeclado[indexPath.row])! + 1)
-                print(senha)
                 quadroSenha.reloadData()
                 continuar.isEnabled = false
                 continuar.backgroundColor = UIColor(displayP3Red: 191/255, green: 247/255, blue: 197/255, alpha: 1)
