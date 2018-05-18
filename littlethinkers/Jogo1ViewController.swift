@@ -184,8 +184,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     if bonus > 3{
                         bonus = 3
                     }
+                    quadrocondicao.layer.borderWidth = 5
+                    quadrocondicao.layer.borderColor = UIColor.white.cgColor
 
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        self.quadrocondicao.layer.borderWidth = 1
+                        self.quadrocondicao.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
+                        
                         let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                         let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
                         var randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
@@ -226,7 +231,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                     tempo.text = String(segundos)
                     bonus = 1
                     quadrojogo.reloadData()
+                    quadrocondicao.layer.borderWidth = 5
+                    quadrocondicao.layer.borderColor = UIColor.red.cgColor
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                        self.quadrocondicao.layer.borderWidth = 1
                         self.jogoimages.remove(at: posicao)
                         novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
                         while self.garantir(cell: novacell, ary: self.jogoimages) == false {
@@ -326,7 +334,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         tempo.text = String(segundos)
                         bonus = 1
                         quadrojogo.reloadData()
+                        quadrocondicao.layer.borderWidth = 5
+                        quadrocondicao.layer.borderColor = UIColor.red.cgColor
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                            self.quadrocondicao.layer.borderWidth = 1
                             self.jogoimages.remove(at: posicao )
                             novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
                             while self.garantir(cell: novacell, ary: self.jogoimages) == false{
@@ -371,7 +382,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                         if bonus > 3{
                             bonus = 3
                         }
+                        quadrocondicao.layer.borderWidth = 5
+                        quadrocondicao.layer.borderColor = UIColor.white.cgColor
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            self.quadrocondicao.layer.borderWidth = 1
+                            self.quadrocondicao.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
                             let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                             let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
                             let randomcondi = self.condicoes[Int(arc4random_uniform(UInt32(self.condicoes.count)))]
@@ -409,7 +424,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             tempo.text = String(segundos)
                             bonus = 1
                             quadrojogo.reloadData()
+                            quadrocondicao.layer.borderWidth = 5
+                            quadrocondicao.layer.borderColor = UIColor.red.cgColor
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                                self.quadrocondicao.layer.borderWidth = 1
                                 self.jogoimages.remove(at: posicao)
                                 novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
                                 while self.garantir(cell: novacell, ary: self.jogoimages) == false {
@@ -456,7 +474,11 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                             if bonus > 3{
                                 bonus = 3
                             }
+                            quadrocondicao.layer.borderWidth = 5
+                            quadrocondicao.layer.borderColor = UIColor.white.cgColor
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                self.quadrocondicao.layer.borderWidth = 1
+                                self.quadrocondicao.layer.borderColor = #colorLiteral(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)
                                 self.jogoimages.remove(at: posicao)
                                 let randomforma = self.formas[Int(arc4random_uniform(UInt32(self.formas.count)))]
                                 let randomcores = self.cores[Int(arc4random_uniform(UInt32(self.cores.count)))]
@@ -497,7 +519,10 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                 tempo.text = String(segundos)
                                 bonus = 1
                                 quadrojogo.reloadData()
+                                quadrocondicao.layer.borderWidth = 5
+                                quadrocondicao.layer.borderColor = UIColor.red.cgColor
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                                    self.quadrocondicao.layer.borderWidth = 1
                                     self.jogoimages.remove(at: posicao )
                                     novacell = self.formacor[Int(arc4random_uniform(UInt32(self.formacor.count)))]
                                     while self.garantir(cell: novacell, ary: self.jogoimages) == false{
