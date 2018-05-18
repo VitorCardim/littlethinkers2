@@ -15,6 +15,7 @@ class AcertosEErrosViewController: UIViewController {
     var errosarray = Array<Int>()
     var arraypontosfirebase = Array<Int>()
     
+    
 
 
     @IBOutlet weak var sair: UIButton!
@@ -31,6 +32,8 @@ class AcertosEErrosViewController: UIViewController {
     @IBOutlet weak var texto: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         tex.layer.cornerRadius = tex.bounds.height / 2
         sair.layer.cornerRadius = sair.bounds.height / 2
         sair.layer.borderWidth = 1

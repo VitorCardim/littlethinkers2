@@ -56,7 +56,7 @@ class AvaViewController: UIViewController, UICollectionViewDelegate, UICollectio
         continuar.setTitleColor(UIColor.black, for: .normal)
         continuar.backgroundColor = UIColor(displayP3Red: 255/255, green: 216/255, blue: 43/255, alpha: 1)
         
-        numeroAvatar = images.index(of: images[indexPath.row])!
+        numeroAvatar = images.index(of: images[indexPath.row])! + 1
 
         
     }

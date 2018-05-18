@@ -26,7 +26,7 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     var aluno = String()
     
-    let nowtimestamp = Date().timeIntervalSince1970
+    
     @IBOutlet weak var fimatividade: UIButton!
     @IBOutlet weak var voltarparatelasenha: UIButton!
     var timernumero = Timer()
@@ -68,7 +68,6 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
             }
         })
         
-
         quadrocondicao.delegate = self
         quadrocondicao.dataSource = self
         quadrojogo.delegate = self
@@ -544,7 +543,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
                                                 self.verificador = false
                                                 break}
                                         }}
-                                    self.quadrojogo.reloadData()}}}}}
+                                    self.quadrojogo.reloadData()}}}}
+        let post:[String:Any] = ["nome": aluno,
+                                 "avatar": avatar,
+                                 "acertos": acertos,
+                                 "erros": erros]
+        self.ref.child("atividades/\(senha)/alunos/\(aluno)").setValue(post)
+    }
 
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
@@ -568,13 +573,13 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         let enviarerrosarray = segue.destination as! SenhaViewController
         enviarerrosarray.errosarray = errosarray}
         else{
-//        if tempoprofessora == 0{
-//            let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-//            enviarpontosarray1.pontosarray = pontosarray
-//            let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-//            enviaracertosarray1.acertosarray = acertosarray
-//            let enviarerrosarray1 = segue.destination as! FimAtividadeTrofeusViewController
-//            enviarerrosarray1.errosarray = errosarray}
+        if tempoprofessora == 0 {
+            let enviarpontosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviarpontosarray1.pontosarray = pontosarray
+            let enviaracertosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviaracertosarray1.acertosarray = acertosarray
+            let enviarerrosarray1 = segue.destination as! FimAtividadeTrofeusViewController
+            enviarerrosarray1.errosarray = errosarray}
         
         }}
     
@@ -583,11 +588,12 @@ class Jogo1ViewController: UIViewController, UICollectionViewDelegate, UICollect
         segundos -= 1
         
         tempo.text = String(segundos)
-        
-        if nowtimestamp >= tempolimite {
+        let nowtimestamp = Date().timeIntervalSince1970
+        if nowtimestamp > tempolimite {
             tempoprofessora = 0
+            timernumero.invalidate()
             
-        //    self .performSegue(withIdentifier: "fim", sender: self)
+            self .performSegue(withIdentifier: "fim", sender: self)
             
         }
         
